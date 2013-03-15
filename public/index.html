@@ -1,21 +1,36 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <meta charset=utf-8>
-  <title>App</title>
-  <link rel="stylesheet" href="/application.css" type="text/css" charset="utf-8">
-  <script src="/application.js" type="text/javascript" charset="utf-8"></script>
-  <script type="text/javascript" charset="utf-8">
-    var jQuery  = require("jqueryify");
-    var exports = this;
-    jQuery(function(){
-      var App = require("index");
-      exports.app = new App({el: $("body")});      
-    });
-  </script>
-  
-  <!-- Getting started script - should be removed -->
-  <script src="http://maccman-spine.herokuapp.com/start.js" type="text/javascript" charset="utf-8"></script>
-</head>
-<body></body>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Fists of Fury!</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <style type="text/css">
+
+        </style>
+        <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+        <!--[if lt IE 9]>
+          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+        <link href="css/main.css" rel="stylesheet">
+
+        <link rel="shortcut icon" href="favicon.ico">
+    </head>
+<body>
+
+</body>
+<script src="js/lib/jquery-1.9.1.min.js"></script>
+<script src="js/lib/bootstrap.min.js"></script>
+<!-- Load Spine.js -->
+<script src="js/lib/spine.js"></script>
+
+<!-- Optional Spine extensions -->
+<script src="js/lib/local.js"></script>
+<script src="js/lib/route.js"></script>
+
 </html>
