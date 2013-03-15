@@ -1,0 +1,30 @@
+{
+  "name": "fingers-of-fury",
+  "version": "0.0.1",
+  "description": "The mighty fingers of fury!",
+  "contributors": [
+    {
+      "name": "Marshall Upshur",
+      "email": "marshall_upshur@sv.comcast.com"
+    },
+    {
+      "name": "Simon Chung",
+      "email": "simon_chung@sv.comcast.com"
+    },
+    {
+      "name": "Hong Taek Kwon",
+      "email": "hong_kwon@sv.comcast.com"
+    },
+    {
+      "name": "Thaya K. Kareeson",
+      "email": "thaya_kareeson@sv.comcast.com"
+    }
+  ],
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "express": "~3.1.0",
+    "socket.io": "~0.9.13",
+    "underscore": "~1.4.4",
+    "underscore.string": "~2.3.1"
+  }
+}
