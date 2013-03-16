@@ -1,36 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <title>Fists of Fury!</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="">
+<head>
+    <meta charset="utf-8">
+    <title>Fingers of Fury!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="css/font-awesome.min.css">
-        <style type="text/css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <style type="text/css">
 
-        </style>
-        <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-        <!--[if lt IE 9]>
-          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
+    </style>
+    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
 
-        <link href="css/main.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
 
-        <link rel="shortcut icon" href="favicon.ico">
-    </head>
+    <link rel="shortcut icon" href="favicon.ico">
+</head>
 <body>
 
+  <div id="page" class="container-fluid">
+    <div id="game-board-container">
+      <div id="game-board">
+        <section class="game-intro">
+            <h1 class="main-title">Fingers of Fury</h1>
+        </section>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="js/lib/jquery-1.9.1.min.js"></script>
+  <script src="js/lib/bootstrap.min.js"></script>
+  <!-- Load Spine.js -->
+  <script src="js/lib/spine.js"></script>
+
+  <!-- Optional Spine extensions -->
+  <script src="js/lib/local.js"></script>
+  <script src="js/lib/route.js"></script>
+
+  <script>
+
+  (function() {
+    $window = $(window);
+    $page = $('div#page');
+
+    var resizePage = function() {
+      var winHeight = $window.height();
+
+      $page.css({'height': winHeight - 20 + 'px'});
+    };
+
+
+    $window.resize(resizePage);
+
+    resizePage();
+  }());
+
+  </script>
+
 </body>
-<script src="js/lib/jquery-1.9.1.min.js"></script>
-<script src="js/lib/bootstrap.min.js"></script>
-<!-- Load Spine.js -->
-<script src="js/lib/spine.js"></script>
-
-<!-- Optional Spine extensions -->
-<script src="js/lib/local.js"></script>
-<script src="js/lib/route.js"></script>
-
 </html>
