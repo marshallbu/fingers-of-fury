@@ -1,72 +1,38 @@
 <!DOCTYPE html>
-<html lang="en">
-<<<<<<< HEAD
+<html lang="en" ng-app>
 <head>
-    <meta charset="utf-8">
-    <title>Fingers of Fury!</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <meta charset="utf-8">
+  <title>Fingers of Fury!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <style type="text/css">
+  <link href="styles/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles/css/font-awesome.min.css">
+  <style type="text/css">
 
-    </style>
-    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-    <!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+  </style>
+  <link href="styles/css/bootstrap-responsive.min.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
 
-    <link href="css/main.css" rel="stylesheet">
+  <link href="styles/css/main.css" rel="stylesheet">
 
-    <link rel="shortcut icon" href="favicon.ico">
+  <link rel="shortcut icon" href="favicon.ico">
 </head>
-=======
-    <head>
-        <meta charset="utf-8">
-        <title>Fingers of Fury!</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="">
 
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="css/font-awesome.min.css">
-        <style type="text/css">
-
-        </style>
-        <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-        <!--[if lt IE 9]>
-          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-
-        <link href="css/main.css" rel="stylesheet">
-
-        <link rel="shortcut icon" href="favicon.ico">
-    </head>
->>>>>>> initial api commit
 <body>
 
   <div id="page" class="container-fluid">
     <div id="game-board-container">
-      <div id="game-board">
-        <section class="game-intro">
-            <h1 class="main-title">Fingers of Fury</h1>
-        </section>
+      <div id="game-board" ng-view>
+        
       </div>
     </div>
   </div>
 
-
-  <script src="js/lib/jquery-1.9.1.min.js"></script>
-  <script src="js/lib/bootstrap.min.js"></script>
-  <!-- Load Spine.js -->
-  <script src="js/lib/spine.js"></script>
-
-  <!-- Optional Spine extensions -->
-  <script src="js/lib/local.js"></script>
-  <script src="js/lib/route.js"></script>
-
+  <script data-main="js/main" src="js/lib/require-jquery.js"></script>
   <script>
 
   (function() {

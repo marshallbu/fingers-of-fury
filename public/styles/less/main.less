@@ -1,0 +1,65 @@
+@import "elements";
+@import "custom-mixins";
+@import "custom-fonts";
+
+// Settings and Defaults
+@imgBaseUrl: "../../img/";
+@colorBloodHex: #9e0b0f;
+@colorBloodRGB: rgba(158, 11, 15, 1);
+
+html {
+  height: 100%;
+}
+
+body {
+  color: #222;
+  background: #222222;
+  /*margin: 0;*/
+}
+
+div#page.container-fluid {
+  padding: 0;
+  margin: 10px;
+  position: relative;
+
+  div#game-board-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid #111; 
+
+
+    div#game-board {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 10px;
+      background: url('@{imgBaseUrl}board.jpg') no-repeat center center fixed; 
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+
+  }
+
+}
+
+// Intro Styles
+section.game-intro {
+
+  h1.main-title {
+    font-family:'Papyrus-Regular';
+    font-size: 4.286em;
+    text-align: center;
+    text-transform: uppercase;
+    .text-shadow(0em, 0em, 0.071em, rgba(0, 0, 0, 0.5));
+  }
+
+
+}
+

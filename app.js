@@ -1,15 +1,17 @@
-var express = require('express')
-  , controllers = require('./controllers')({verbose: true})
-  , _ = require('underscore')
-  , util = require('util')
-  , path = require('path')
-  , socket = require('socket.io');
+var express = require('express');
+var app = express();
+var server = require('http').createServer(app);
+var controllers = require('./controllers')({verbose: true});
+var _ = require('underscore');
+var util = require('util');
+var path = require('path');
+var io = require('socket.io');
 
 _.str = require('underscore.string');
 _.mixin(_.str.exports());
 
 
-var app = express();
+io.listen(server);
 
 // load controllers
 var api = controllers.api;
@@ -34,5 +36,11 @@ app.get('/api/leaveTable', api.leaveTable);
 app.get('/api/incrementPlayerStats', api.incrementPlayerStats);
 app.get('/api/playMove', api.playMove);
 
-app.listen(3000);
+
+
+
+// app.listen(3000);
+server.listen(3000);
 console.log('Listening on port 3000');
+
+
