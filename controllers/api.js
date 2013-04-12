@@ -5,6 +5,7 @@ var _ = require('underscore')
   , util = require('util')
   , redis = require('redis')
   , redisClient = redis.createClient();
+var generator = require('../lib/generator');
 
 
 // -----------------------
@@ -62,11 +63,14 @@ module.exports.createTable = function(req, res, next) {
 
   var callback = function(resp) {
     // generate table id
+    var hostname = req.headers.host;
     var tableId = 'table:' + resp;
+    var tableUrl = 'http://' + hostname + '/m/' + generator.generateId(10, 'aA#');
 
     // table statistics
     var tableStats = {
       id: resp.toString(),
+      url: tableUrl,
       created: Date.now().toString(),
       players: [],
       rounds: "0",
@@ -80,7 +84,8 @@ module.exports.createTable = function(req, res, next) {
     redisClient.set(tableId, JSON.stringify(tableStats));
 
     res.json({
-      id: tableId
+      id: tableId,
+      url: tableUrl
     });
   };
 

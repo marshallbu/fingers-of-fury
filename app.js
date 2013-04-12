@@ -6,6 +6,7 @@ var _ = require('underscore');
 var util = require('util');
 var path = require('path');
 var io = require('socket.io');
+var generator = require('./lib/generator');
 
 _.str = require('underscore.string');
 _.mixin(_.str.exports());
@@ -16,7 +17,10 @@ io.listen(server);
 // load controllers
 var api = controllers.api;
 
-app.use(express.static(path.join(__dirname, 'public'), {maxAge: 1000*60}));
+// app.use('/', express.static(path.join(__dirname, 'public'), {maxAge: 1000*60}));
+// app.use('/m', express.static(path.join(__dirname, 'mobile'), {maxAge: 1000*60}));
+app.use('/', express.static(path.join(__dirname, 'public'), {}));
+app.use('/m', express.static(path.join(__dirname, 'mobile'), {}));
 
 // api
 app.get('/api/tableInfo', api.tableInfo);

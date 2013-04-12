@@ -6,7 +6,8 @@ define([
 ], function(app, game) {
   return app.config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/', {
-      templateUrl: 'partials/game-intro.html'
+      templateUrl: 'partials/control-intro.html', 
+      controller: 'GameCtrl'
     });
       
     $routeProvider.otherwise({redirectTo: '/'});

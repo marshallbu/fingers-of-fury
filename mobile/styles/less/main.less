@@ -19,7 +19,7 @@ body {
 
 div#page.container-fluid {
   padding: 0;
-  margin: 10px;
+  // margin: 10px;
   position: relative;
 
   div#game-board-container {
@@ -53,7 +53,6 @@ div#page.container-fluid {
 section.game-intro {
 
   h1.main-title {
-    margin: 0;
     font-family:'Papyrus-Regular';
     font-size: 4.286em;
     text-align: center;
@@ -61,33 +60,9 @@ section.game-intro {
     .text-shadow(0em, 0em, 0.071em, rgba(0, 0, 0, 0.5));
   }
 
-  div.control-gestures {
-    text-align: center;
-    padding-top: 50px;
-    padding-bottom: 50px;
-    img {
-      height: 200px;
-      width: 200px;
-      margin: 0 30px;
-    }
-  }
-
-  div.control-info {
-    padding: 30px 0;
-    text-align: center;
-    font-family:'Papyrus-Regular';
-    line-height: 1.429em;
-    font-size: 1.286em;
-    .text-shadow(0em, 0em, 0.071em, rgba(0, 0, 0, 0.5));
-
-    span.link {
-      font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
-      color: @colorBloodHex;
-      .text-shadow(0em, 0em, 0em, rgba(0,0,0,0.0));
-    }
-  }
 
 }
+
 
 
 /* Large desktop */
@@ -97,14 +72,18 @@ section.game-intro {
  
 /* Portrait tablet to landscape and desktop */
 @media (min-width: 768px) and (max-width: 979px) {
+
 }
  
 /* Landscape phone to portrait tablet */
 @media (max-width: 767px) {
-
+  body {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
  
 /* Landscape phones and down */
-@media (max-width: 480px) { 
-
+@media (max-width: 480px) {
 }
+

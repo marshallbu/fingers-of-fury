@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" ng-app>
 <head>
-  <meta charset="utf-8">
+  <meta content="yes" name="apple-mobile-web-app-capable" />
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
   <title>Fingers of Fury!</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=0.6667, user-scalable=no">
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <link href="styles/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="styles/css/font-awesome.min.css">
+  <link href="/styles/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/css/font-awesome.min.css">
   <style type="text/css">
 
   </style>
-  <link href="styles/css/bootstrap-responsive.min.css" rel="stylesheet">
+  <link href="/styles/css/bootstrap-responsive.min.css" rel="stylesheet">
   <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
@@ -22,7 +23,7 @@
   <link rel="shortcut icon" href="favicon.ico">
 </head>
 
-<body class="gameboard-view">
+<body class="controller-view">
 
   <div id="page" class="container-fluid">
     <div id="game-board-container">
@@ -32,23 +33,25 @@
     </div>
   </div>
 
-  <script data-main="js/main" src="js/lib/require-jquery.js"></script>
+  <script data-main="js/main" src="/js/lib/require-jquery.js"></script>
   <script>
 
   (function() {
     $window = $(window);
+
     $page = $('div#page');
 
     var resizePage = function() {
       var winHeight = $window.height();
 
-      $page.css({'height': winHeight - 20 + 'px'});
+      $page.css({'height': winHeight + 'px'});
     };
 
 
     $window.resize(resizePage);
+    $window.ready(resizePage);
 
-    resizePage();
+    // $window.scrollTo(0,1);
   }());
 
   </script>

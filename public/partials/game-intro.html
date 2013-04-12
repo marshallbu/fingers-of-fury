@@ -1,10 +1,41 @@
 <section class="game-intro" ng-controller="GameMenuCtrl">
   <h1 class="main-title">Fingers of Fury</h1>
 
+  <div class="control-gestures">
+    <img src="/img/rock.png" />
+    <img src="/img/paper.png" />
+    <img src="/img/scissors.png" />
+  </div>
+
+  <div class="control-info">
+    <strong>Join on your iPhone by visiting:<br/><span class="link">{{game.table.url}}</span></strong>
+  </div>
 
 </section>
 
 <script>
-  
+  (function() {
+    console.log('test');
+    $window = $(window);
+
+    $section = $('section.game-intro');
+
+    var alignIntro = function() {
+      var winHeight = $window.height();
+      var introHeight = $section.height();
+
+      if (winHeight > 0 && (winHeight - introHeight) > 0) {
+        $section.css('position', 'relative');
+        $section.css('top', function() {
+          return ((winHeight / 2) - (introHeight / 2)) + 'px';
+        });
+      }
+    };
+
+    $window.resize(alignIntro);
+    // $window.load(alignIntro);
+    alignIntro();
+    
+  }());
 
 </script>
