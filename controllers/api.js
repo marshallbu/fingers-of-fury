@@ -65,11 +65,14 @@ module.exports.createTable = function(req, res, next) {
     // generate table id
     var hostname = req.headers.host;
     var tableId = 'table:' + resp;
-    var tableUrl = 'http://' + hostname + '/m/' + generator.generateId(10, 'aA#');
+    var session = generator.generateId(10, 'aA#');
+    var tableSession = 'table:' + session;
+    var tableUrl = 'http://' + hostname + '/m/' + session;
 
     // table statistics
     var tableStats = {
       id: resp.toString(),
+      session: session,
       url: tableUrl,
       created: Date.now().toString(),
       players: [],
@@ -82,6 +85,9 @@ module.exports.createTable = function(req, res, next) {
 
     // use hmset instead?
     redisClient.set(tableId, JSON.stringify(tableStats));
+
+    // also set a table session key that points to the tableId
+    redisClient.set(tableSession, tableId);
 
     res.json({
       id: tableId,
