@@ -9,9 +9,9 @@
 define([
   'app'
 ], function (app) {
-  return app.controller('GameMenuCtrl', ['$scope', '$routeParams', '$http',
-    function GameMenuCtrl($scope, $routeParams, $http) {
-      $scope.game = {};
+  app.controller('GameMenuCtrl', ['$scope', 'socket', '$location', '$routeParams', '$http',
+    function GameMenuCtrl($scope, socket, $location, $routeParams, $http) {
+      $scope.game = $scope.game || {};
 
       $http.get('api/createTable').success(function(response) {
         console.log('table data:', response);
@@ -20,6 +20,21 @@ define([
       });
 
       $scope.game.name = 'test';
+
+      socket.on('game:player:joined', function(data) {
+        $location.path('/board');
+      });
     }
   ]);
+
+  app.controller('GameBoardCtrl', ['$scope', 'socket', '$routeParams', '$http',
+    function GameBoardCtrl($scope, socket, $routeParams, $http) {
+      // $scope.game = $scope.game || {};
+
+      //
+      
+    }
+  ]);
+
+  return app;
 });

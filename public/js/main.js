@@ -32,9 +32,10 @@ require([
   'io',
   'angular',
   'app',
+  'services/services',
   'controllers/game',
   'routes'
-], function ($, _, _s, bootstrap, io, angular, app, game) {
+], function ($, _, _s, bootstrap, io, angular, app, services, game) {
     angular.element(document).ready(function() {
       angular.bootstrap(document, ['fof']);
     });

@@ -24,7 +24,7 @@ div#page.container-fluid {
   padding: 0;
   position: relative;
 }
-div#page.container-fluid div#game-board-container {
+div#page.container-fluid div#game-controller-container {
   position: absolute;
   top: 0;
   left: 0;
@@ -32,7 +32,7 @@ div#page.container-fluid div#game-board-container {
   bottom: 0;
   border: 1px solid #111;
 }
-div#page.container-fluid div#game-board-container div#game-board {
+div#page.container-fluid div#game-controller-container div#game-controller {
   position: absolute;
   top: 0;
   left: 0;
@@ -45,13 +45,19 @@ div#page.container-fluid div#game-board-container div#game-board {
   -o-background-size: cover;
   background-size: cover;
 }
-section.game-intro h1.main-title {
+section.game-controller h1.main-title {
   font-family: 'Papyrus-Regular';
-  font-size: 4.286em;
+  font-size: 1.500em;
   text-align: center;
   text-transform: uppercase;
   text-shadow: 0em 0em 0.071em rgba(0, 0, 0, 0.5);
   filter: dropshadow(color=rgba(0, 0, 0, 0.5), offx=0em, offy=0em);
+}
+section.game-controller div.game-controller-intro {
+  text-align: center;
+}
+section.game-controller div.game-controller-intro form.player-form div.form-buttons button {
+  margin-bottom: 10px;
 }
 /* Large desktop */
 @media (min-width: 1200px) {

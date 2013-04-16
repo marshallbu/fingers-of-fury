@@ -9,6 +9,10 @@ define([
       templateUrl: 'partials/game-intro.html'
     });
       
+    $routeProvider.when('/board', {
+      templateUrl: 'partials/game-board.html'
+    });
+
     $routeProvider.otherwise({redirectTo: '/'});
 
   }]);

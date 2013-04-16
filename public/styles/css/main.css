@@ -46,6 +46,9 @@ div#page.container-fluid div#game-board-container div#game-board {
   -o-background-size: cover;
   background-size: cover;
 }
+section.game-intro {
+  background: url('../../img/blood_strike.png') no-repeat center center fixed;
+}
 section.game-intro h1.main-title {
   margin: 0;
   font-family: 'Papyrus-Regular';

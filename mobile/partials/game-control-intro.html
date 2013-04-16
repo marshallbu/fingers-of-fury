@@ -1,0 +1,29 @@
+<section class="game-controller" ng-controller="GameCtrl">
+  <h1 class="main-title">Fingers of Fury</h1>
+
+  <div class="game-controller-intro">
+    <form name="playerForm" class="player-form">
+      <div class="alert alert-error" ng-show="playerForm.playerName.$dirty && playerForm.playerName.$invalid">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <span ng-show="playerForm.playerName.$error.required">A warrior name is required, silly butterfly!</span>
+        <span ng-show="playerForm.playerName.$error.pattern">A warrior name must be 3-15 characters long and alphanumeric, infant mosquito!</span>
+      </div>
+
+      <input type="text" name="playerName" placeholder="Enter your warrior name..." ng-model="player.name" ng-pattern="namePattern" required/>
+      <div class="form-buttons">
+        <button class="btn btn-large btn-primary" type="button" ng-disabled="playerForm.$invalid" ng-click="playerJoin(player)">Join the Battle</button>
+        <br/>
+        <button class="btn btn-small btn-inverse" type="button" ng-click="playerLeave()">Wuss Out</button>
+      </div>
+    </form>
+  </div>
+
+</section>
+
+<script>
+  (function() {
+    console.log('test');
+    
+  }());
+
+</script>

@@ -7,7 +7,6 @@ var _ = require('underscore')
   , redisClient = redis.createClient();
 var generator = require('../lib/generator');
 
-
 // -----------------------
 // internal functions
 // -----------------------
@@ -46,7 +45,10 @@ var _getFreeTableId = function(callback) {
 var _updateTableStats = function(tableId, data) {
   console.log('PRIVATE API CALL: _updateTableStats');
   //redisClient.get('table:' + tableId, function(err, resp) {});
-  redisClient.setnx('table:' + tableId, data);
+  // redisClient.setnx('table:' + tableId, data);
+
+  // making this update the hash
+  redisClient.hmset('table:' + tableId, data);
 }
 
 
@@ -65,9 +67,9 @@ module.exports.createTable = function(req, res, next) {
     // generate table id
     var hostname = req.headers.host;
     var tableId = 'table:' + resp;
-    var session = generator.generateId(10, 'aA#');
+    var session = generator.generateId(5, 'aA#');
     var tableSession = 'table:' + session;
-    var tableUrl = 'http://' + hostname + '/m/' + session;
+    var tableUrl = 'http://' + hostname + '/m/#/' + session;
 
     // table statistics
     var tableStats = {
@@ -75,16 +77,18 @@ module.exports.createTable = function(req, res, next) {
       session: session,
       url: tableUrl,
       created: Date.now().toString(),
-      players: [],
+      // players: [], // can't have anything other than strings in a redis hash
+      players: tableId + ':players', // a redis set of player keys
       rounds: "0",
       winner: ""
     };
     console.log(tableStats);
-    console.log(JSON.stringify(tableStats));
-    console.log(JSON.parse(JSON.stringify(tableStats)));
+    // console.log(JSON.stringify(tableStats));
+    // console.log(JSON.parse(JSON.stringify(tableStats)));
 
     // use hmset instead?
-    redisClient.set(tableId, JSON.stringify(tableStats));
+    // redisClient.set(tableId, JSON.stringify(tableStats));
+    redisClient.hmset(tableId, tableStats);
 
     // also set a table session key that points to the tableId
     redisClient.set(tableSession, tableId);
@@ -107,14 +111,15 @@ module.exports.createTable = function(req, res, next) {
 module.exports.tableInfo = function(req, res, next) {
   console.log('API REQUEST: tableInfo');
 
-  var tableId = req.tableId;
+  var tableId = req.params.tableId;
   var tableStats;
   var players = [];
 
-  redisClient.get('table:' + tableId, function (err, resp) { // use hgetall instead?
+  // redisClient.get('table:' + tableId, function (err, resp) { // use hgetall instead?
+  redisClient.hgetall('table:' + tableId, function (err, resp) {
     console.log(resp);
-    console.log(JSON.parse(resp));
-    console.log(util.inspect(JSON.parse(resp)));
+    // console.log(JSON.parse(resp));
+    // console.log(util.inspect(JSON.parse(resp)));
     if (resp === null) {
       res.json({
         error: 'Table does not exist'
@@ -126,16 +131,79 @@ module.exports.tableInfo = function(req, res, next) {
         console.log(player);
       }
       */
-      //tableStats = JSON.parse(resp);
+      // tableStats = JSON.parse(resp);
       tableStats = resp;
 
+      // res.json({
+      //   id: tableStats.id,
+      //   created: tableStats.created,
+      //   players: players,
+      //   winner: tableStats.winner,
+      //   round: tableStats.rounds
+      // });
+      res.json(tableStats);
+    }
+  });
+};
+
+/**
+ * gets table info by session
+ *
+ * @requestType GET
+ */
+module.exports.tableInfoBySession = function(req, res, next) {
+  console.log('API REQUEST: tableInfoBySession');
+
+  var tableSessionId = req.params.sessionId;
+  var tableId;
+  var tableStats;
+  var players = [];
+
+  redisClient.get('table:' + tableSessionId, function (err, resp) { // use hgetall instead?
+    console.log(resp);
+    // console.log(JSON.parse(resp));
+    // console.log(util.inspect(JSON.parse(resp)));
+    if (resp === null) {
       res.json({
-        id: tableStats.id,
-        created: tableStats.created,
-        players: players,
-        winner: tableStats.winner,
-        round: tableStats.rounds
+        error: 'Table session does not exist'
       });
+    } else {
+      tableId = resp;
+      console.log('blah');
+
+      // get the table stats with the table id
+      // this should probably get condensed with some sort of shim
+      // redisClient.get(tableId, function (err, resp) { // use hgetall instead?
+      redisClient.hgetall(tableId, function (err, resp) { // use hgetall instead?
+        console.log(resp);
+        // console.log(JSON.parse(resp));
+        // console.log(util.inspect(JSON.parse(resp)));
+        if (resp === null) {
+          res.json({
+            error: 'Table does not exist'
+          });
+        } else {
+          /*
+          for (var player in resp.players) { // don't use for...in
+            // multi get for each player name
+            console.log(player);
+          }
+          */
+          // tableStats = JSON.parse(resp);
+          tableStats = resp;
+
+          // res.json({
+          //   id: tableStats.id,
+          //   created: tableStats.created,
+          //   players: tableStats.players,
+          //   winner: tableStats.winner,
+          //   round: tableStats.rounds
+          // });
+          res.json(tableStats);
+        }
+      });
+
+
     }
   });
 };
@@ -154,35 +222,38 @@ module.exports.joinTable = function(req, res, next) {
   console.log('API REQUEST: joinTable');
   var self = this;
 
-  var tableId = req.tableId
-    , name = req.name;
+  var tableId = req.body.tableId;
+  var playerName = req.body.name;
 
   var player = {
-    name: name,
+    name: playerName,
     wins: 0,
     total: 0,
     state: 'undecided',
     table: tableId
   };
 
-  redisClient.get('table:' + tableId + ':player:' + name, function (err, resp) {
+  var playerKey = 'table:' + tableId + ':player:' + playerName;
+
+  redisClient.hgetall(playerKey, function (err, resp) {
     if (resp === null) {
-      redisClient.set('table:' + tableId + ':player:' + name, player);
-      redisClient.get('table:' + tableId, function (err, resp) {
-        resp.players.push(name); // check for unique player
-        self._updateTableStats(resp);
+      // redisClient.set('table:' + tableId + ':player:' + name, player);
+      redisClient.hmset(playerKey, player);
+
+      redisClient.hgetall('table:' + tableId, function (err, resp) {
+        // need to check the table number before adding new players so we don't go over 4/max
+        tableStats = resp;
+        redisClient.sadd(tableStats.players, playerKey);
+        // _updateTableStats(tableId, tableStats); // no need to do this anymore for the time being
       });
+
+      res.json(player);
+
     } else {
       res.json({
         error: 'Player already exists at table ' + tableId
       });
     }
-  });
-
-  var players = [];
-
-  res.json({
-    players: players
   });
 
   // @todo trigger notification
