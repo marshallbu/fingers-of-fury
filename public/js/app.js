@@ -8,5 +8,5 @@
 define([
   'angular'
 ], function (angular) {
-    return angular.module('fof', []);
+    return angular.module('fof', ['playerServices']);
 });

@@ -13,6 +13,10 @@ define([
       templateUrl: 'partials/game-board.html'
     });
 
+    $routeProvider.when('/board/:sessionId', {
+      templateUrl: 'partials/game-board.html'
+    });
+
     $routeProvider.otherwise({redirectTo: '/'});
 
   }]);

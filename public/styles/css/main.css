@@ -46,10 +46,10 @@ div#page.container-fluid div#game-board-container div#game-board {
   -o-background-size: cover;
   background-size: cover;
 }
-section.game-intro {
+section.game-intro-view {
   background: url('../../img/blood_strike.png') no-repeat center center fixed;
 }
-section.game-intro h1.main-title {
+section.game-intro-view h1.main-title {
   margin: 0;
   font-family: 'Papyrus-Regular';
   font-size: 4.286em;
@@ -58,17 +58,17 @@ section.game-intro h1.main-title {
   text-shadow: 0em 0em 0.071em rgba(0, 0, 0, 0.5);
   filter: dropshadow(color=rgba(0, 0, 0, 0.5), offx=0em, offy=0em);
 }
-section.game-intro div.control-gestures {
+section.game-intro-view div.control-gestures {
   text-align: center;
   padding-top: 50px;
   padding-bottom: 50px;
 }
-section.game-intro div.control-gestures img {
+section.game-intro-view div.control-gestures img {
   height: 200px;
   width: 200px;
   margin: 0 30px;
 }
-section.game-intro div.control-info {
+section.game-intro-view div.control-info {
   padding: 30px 0;
   text-align: center;
   font-family: 'Papyrus-Regular';
@@ -77,11 +77,44 @@ section.game-intro div.control-info {
   text-shadow: 0em 0em 0.071em rgba(0, 0, 0, 0.5);
   filter: dropshadow(color=rgba(0, 0, 0, 0.5), offx=0em, offy=0em);
 }
-section.game-intro div.control-info span.link {
+section.game-intro-view div.control-info span.link {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #9e0b0f;
   text-shadow: 0em 0em 0em rgba(0, 0, 0, 0);
   filter: dropshadow(color=rgba(0, 0, 0, 0), offx=0em, offy=0em);
+}
+section.game-board-view {
+  height: 100%;
+  position: relative;
+}
+section.game-board-view div.player {
+  height: 200px;
+  width: 200px;
+  border: 2px solid #111;
+}
+section.game-board-view div.player.player-0 {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  margin-left: -100px;
+}
+section.game-board-view div.player.player-1 {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -100px;
+}
+section.game-board-view div.player.player-2 {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin-top: -100px;
+}
+section.game-board-view div.player.player-3 {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin-top: -100px;
 }
 /* Large desktop */
 @media (min-width: 1200px) {

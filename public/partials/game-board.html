@@ -1,11 +1,23 @@
 <section class="game-board-view" ng-controller="GameBoardCtrl">
-  someone joined!
+
+  <div ng-repeat="player in game.players | orderBy:game.playerOrderPredicate">
+    <div class="player player-{{$index}}">
+      <h3>{{player.name}}</h3>
+
+    </div>
+  </div>
 
 </section>
 
 <script>
   (function() {
-    
+    // console.log();
+
+    console.log('test');
+
+    $('div.player').load(function() {
+      this.css('background', 'red');
+    })
     
   }());
 

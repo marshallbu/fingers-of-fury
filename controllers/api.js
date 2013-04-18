@@ -93,10 +93,7 @@ module.exports.createTable = function(req, res, next) {
     // also set a table session key that points to the tableId
     redisClient.set(tableSession, tableId);
 
-    res.json({
-      id: tableId,
-      url: tableUrl
-    });
+    res.json(tableStats);
   };
 
   _getFreeTableId(callback)
@@ -230,7 +227,9 @@ module.exports.joinTable = function(req, res, next) {
     wins: 0,
     total: 0,
     state: 'undecided',
-    table: tableId
+    table: tableId,
+    created: Date.now().toString(),
+    lastJoined: Date.now().toString()
   };
 
   var playerKey = 'table:' + tableId + ':player:' + playerName;
@@ -276,6 +275,50 @@ module.exports.leaveTable = function(req, res, next) {
   });
 
   // @todo trigger notification
+};
+
+/**
+ * get a list of players for a given table
+ * @param tableId
+ *
+ * @requestType GET
+ */
+module.exports.players = function(req, res, next) {
+  console.log('API REQUEST: players');
+
+  var tableId = req.params.tableId;
+  var playerSetKey = 'table:' + tableId + ':players';
+  var players = [];
+
+  // get the player set
+  redisClient.smembers(playerSetKey, function(err, resp) {
+    var playerSet = resp;
+    console.log(playerSet);
+
+
+    var multi = redisClient.multi();
+
+    // for each key, push it into our players array
+    playerSet.forEach(function(playerKey) {
+      multi.hgetall(playerKey, function(err, resp) {
+        var player = resp;
+        console.log(player);
+        players.push(player);
+      });
+    });
+
+    multi.exec(function(err, resp) {
+
+      console.log('what is in players:', players);
+      // return the array
+      res.json(players);      
+    });
+
+    
+  });
+
+
+  
 };
 
 

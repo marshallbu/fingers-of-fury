@@ -12,6 +12,10 @@ define([
     $routeProvider.when('/:sessionId', {
       templateUrl: 'partials/game-control-intro.html'
     });
+
+    $routeProvider.when('/control/:sessionId', {
+      templateUrl: 'partials/game-control.html'
+    });
       
     $routeProvider.otherwise({redirectTo: '/'});
 

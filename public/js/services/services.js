@@ -2,7 +2,7 @@
 
 /* Services */
 
-define(['app'], function (app) {
+define(['angular', 'app'], function (angular, app) {
 
   app.factory('socket', function ($rootScope) {
     var socket = io.connect();
@@ -27,7 +27,15 @@ define(['app'], function (app) {
       }
     };
   });
+
+  angular.module('playerServices', ['ngResource'])
+    .factory('Player', function($resource) {
+      return $resource('/api/tableInfo/:tableId/players', {}, {
+        query: {method: 'GET', params:{tableId: '@tableId'}, isArray: true}
+      });
+    });
+
+  // app.factory('Player', function ())
   
   return app;
-
 });

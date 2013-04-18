@@ -2,6 +2,17 @@
   "CodeKitInfo" : "This is a CodeKit project configuration file. It is designed to sync project settings across multiple machines. Modifying the contents of this file can be a poor life decision if you don't know what you're doing. This file is not useful unless accompanied by the project that created it in CodeKit. For more information, see: http:\/\/incident57.com\/codekit",
   "creatorBuild" : "8283",
   "files" : {
+    "\/mobile\/js\/app.js" : {
+      "ignoreWasSetByUser" : 1,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/mobile\/js\/app.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/mobile\/js\/app-ck.js",
+      "fileType" : 64
+    },
     "\/public\/js\/lib\/bootstrap.min.js" : {
       "ignoreWasSetByUser" : 1,
       "ignore" : 1,
@@ -53,17 +64,6 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
-    "\/public\/img\/rock.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/public\/img\/rock.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/public\/img\/rock.png",
-      "initialSize" : 145775,
-      "fileType" : 8192
-    },
     "\/app.js" : {
       "ignoreWasSetByUser" : 1,
       "ignore" : 1,
@@ -86,14 +86,29 @@
       "initialSize" : 79644,
       "fileType" : 8192
     },
-    "\/public\/styles\/css\/bootstrap.min.css" : {
+    "\/public\/img\/rock.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/public\/styles\/css\/bootstrap.min.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
+      "inputAbbreviatedPath" : "\/public\/img\/rock.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/public\/img\/rock.png",
+      "initialSize" : 145775,
+      "fileType" : 8192
+    },
+    "\/mobile\/styles\/less\/elements.less" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/mobile\/styles\/less\/elements.less",
+      "outputStyle" : 0,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/mobile\/styles\/css\/elements.css",
+      "strictImports" : 0,
+      "fileType" : 1,
+      "debugStyle" : 0
     },
     "\/public\/js\/routes.js" : {
       "ignoreWasSetByUser" : 1,
@@ -115,17 +130,6 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 16
     },
-    "\/mobile\/img\/glyphicons-halflings.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/mobile\/img\/glyphicons-halflings.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/mobile\/img\/glyphicons-halflings.png",
-      "initialSize" : 12799,
-      "fileType" : 8192
-    },
     "\/mobile\/styles\/less\/custom-mixins.less" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -139,18 +143,27 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/mobile\/styles\/less\/elements.less" : {
+    "\/mobile\/img\/glyphicons-halflings.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/mobile\/styles\/less\/elements.less",
-      "outputStyle" : 0,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/mobile\/styles\/css\/elements.css",
-      "strictImports" : 0,
-      "fileType" : 1,
-      "debugStyle" : 0
+      "inputAbbreviatedPath" : "\/mobile\/img\/glyphicons-halflings.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/mobile\/img\/glyphicons-halflings.png",
+      "initialSize" : 12799,
+      "fileType" : 8192
+    },
+    "\/public\/js\/lib\/require-jquery.js" : {
+      "ignoreWasSetByUser" : 1,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/public\/js\/lib\/require-jquery.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/public\/js\/lib\/require-jquery-ck.js",
+      "fileType" : 64
     },
     "\/mobile\/img\/board.jpg" : {
       "ignoreWasSetByUser" : 0,
@@ -183,16 +196,14 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 16
     },
-    "\/mobile\/js\/main.js" : {
-      "ignoreWasSetByUser" : 1,
-      "ignore" : 1,
+    "\/public\/styles\/css\/bootstrap.min.css" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/mobile\/js\/main.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/mobile\/js\/main-ck.js",
-      "fileType" : 64
+      "inputAbbreviatedPath" : "\/public\/styles\/css\/bootstrap.min.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
     },
     "\/public\/styles\/less\/custom-fonts.less" : {
       "ignoreWasSetByUser" : 0,
@@ -251,15 +262,15 @@
       "outputAbbreviatedPath" : "\/public\/js\/lib\/jquery-1.9.1.min-ck.js",
       "fileType" : 64
     },
-    "\/public\/js\/lib\/require-jquery.js" : {
+    "\/mobile\/js\/main.js" : {
       "ignoreWasSetByUser" : 1,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/public\/js\/lib\/require-jquery.js",
+      "inputAbbreviatedPath" : "\/mobile\/js\/main.js",
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/public\/js\/lib\/require-jquery-ck.js",
+      "outputAbbreviatedPath" : "\/mobile\/js\/main-ck.js",
       "fileType" : 64
     },
     "\/public\/styles\/less\/main.less" : {
@@ -307,6 +318,17 @@
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/public\/js\/lib\/angular\/angular.min-ck.js",
       "fileType" : 64
+    },
+    "\/media\/ninja.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/media\/ninja.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/media\/ninja.png",
+      "initialSize" : 92944,
+      "fileType" : 8192
     },
     "\/public\/styles\/css\/main.css" : {
       "ignoreWasSetByUser" : 0,
@@ -373,8 +395,8 @@
       "fileType" : 8192
     },
     "\/mobile\/js\/services\/services.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignoreWasSetByUser" : 1,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/mobile\/js\/services\/services.js",
@@ -392,6 +414,17 @@
       "processed" : 0,
       "outputAbbreviatedPath" : "\/public\/img\/thefinger.png",
       "initialSize" : 132154,
+      "fileType" : 8192
+    },
+    "\/media\/peasant.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/media\/peasant.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/media\/peasant.png",
+      "initialSize" : 87909,
       "fileType" : 8192
     },
     "\/public\/js\/main.js" : {
@@ -440,6 +473,26 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
+    "\/public\/js\/lib\/angular\/angular-resource.min.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/public\/js\/lib\/angular\/angular-resource.min.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/public\/js\/lib\/angular\/angular-resource.min-ck.js",
+      "fileType" : 64
+    },
+    "\/mobile\/partials\/game-control.html" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/mobile\/partials\/game-control.html",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
     "\/public\/img\/glyphicons-halflings-white.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -460,15 +513,6 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 16
     },
-    "\/mobile\/index.html" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/mobile\/index.html",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
     "\/mobile\/styles\/less\/custom-fonts.less" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -482,6 +526,15 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
+    "\/mobile\/index.html" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/mobile\/index.html",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
     "\/public\/js\/app.js" : {
       "ignoreWasSetByUser" : 1,
       "ignore" : 1,
@@ -493,15 +546,15 @@
       "outputAbbreviatedPath" : "\/public\/js\/app-ck.js",
       "fileType" : 64
     },
-    "\/lib\/generator\/index.js" : {
-      "ignoreWasSetByUser" : 1,
-      "ignore" : 1,
+    "\/public\/js\/lib\/angular\/angular.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/lib\/generator\/index.js",
+      "inputAbbreviatedPath" : "\/public\/js\/lib\/angular\/angular.js",
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/lib\/generator\/index-ck.js",
+      "outputAbbreviatedPath" : "\/public\/js\/lib\/angular\/angular-ck.js",
       "fileType" : 64
     },
     "\/public\/js\/services\/services.js" : {
@@ -513,6 +566,17 @@
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/public\/js\/services\/services-ck.js",
+      "fileType" : 64
+    },
+    "\/lib\/generator\/index.js" : {
+      "ignoreWasSetByUser" : 1,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/lib\/generator\/index.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/lib\/generator\/index-ck.js",
       "fileType" : 64
     },
     "\/media\/blood_strike.png" : {
@@ -546,9 +610,20 @@
       "initialSize" : 12799,
       "fileType" : 8192
     },
-    "\/test\/redis.js" : {
+    "\/media\/samurai.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/media\/samurai.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/media\/samurai.png",
+      "initialSize" : 103912,
+      "fileType" : 8192
+    },
+    "\/test\/redis.js" : {
+      "ignoreWasSetByUser" : 1,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/test\/redis.js",
@@ -568,15 +643,6 @@
       "outputAbbreviatedPath" : "\/public\/js\/lib\/underscore.string.min-ck.js",
       "fileType" : 64
     },
-    "\/mobile\/partials\/game-control-default.html" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/mobile\/partials\/game-control-default.html",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
     "\/media\/scissors.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -587,6 +653,15 @@
       "outputAbbreviatedPath" : "\/media\/scissors.png",
       "initialSize" : 158514,
       "fileType" : 8192
+    },
+    "\/mobile\/partials\/game-control-default.html" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/mobile\/partials\/game-control-default.html",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
     },
     "\/public\/img\/scissors.png" : {
       "ignoreWasSetByUser" : 0,
@@ -612,26 +687,48 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/routes\/socket.js" : {
+    "\/media\/peasant2.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/media\/peasant2.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/media\/peasant2.png",
+      "initialSize" : 87776,
+      "fileType" : 8192
+    },
+    "\/media\/peasant3.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/media\/peasant3.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/media\/peasant3.png",
+      "initialSize" : 95420,
+      "fileType" : 8192
+    },
+    "\/public\/js\/lib\/angular\/angular-resource.js" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/public\/js\/lib\/angular\/angular-resource.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/public\/js\/lib\/angular\/angular-resource-ck.js",
+      "fileType" : 64
+    },
+    "\/routes\/socket.js" : {
+      "ignoreWasSetByUser" : 1,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/routes\/socket.js",
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/routes\/socket-ck.js",
-      "fileType" : 64
-    },
-    "\/mobile\/js\/app.js" : {
-      "ignoreWasSetByUser" : 1,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/mobile\/js\/app.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/mobile\/js\/app-ck.js",
       "fileType" : 64
     }
   },

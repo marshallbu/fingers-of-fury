@@ -50,7 +50,7 @@ div#page.container-fluid {
 }
 
 // Intro Styles
-section.game-intro {
+section.game-intro-view {
   background:url('@{imgBaseUrl}blood_strike.png') no-repeat center center fixed;
 
   h1.main-title {
@@ -88,6 +88,46 @@ section.game-intro {
     }
   }
 
+}
+
+// Board styles
+section.game-board-view {
+  height: 100%;
+  position: relative;
+
+  div.player {
+    height: 200px;
+    width: 200px;
+    border: 2px solid #111;
+
+    &.player-0 {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      margin-left: -100px;
+    }
+
+    &.player-1 {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      margin-left: -100px;
+    }
+
+    &.player-2 {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      margin-top: -100px;
+    }
+
+    &.player-3 {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      margin-top: -100px;
+    }
+  }
 }
 
 

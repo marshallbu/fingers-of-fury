@@ -24,25 +24,31 @@ app.use(express.bodyParser());
 // game controller
 app.all(/^\/m$/, function(req, res, next) { res.redirect('/m/'); });
 app.use('/m/', express.static(path.join(__dirname, 'mobile'), {}));
-
 app.all('/m/*', mobile.index);
 
-// api
+// table api
 app.get('/api/tableInfo/:tableId', api.tableInfo);
+app.get('/api/tableInfo/:tableId/players', api.players);
 app.get('/api/tableInfoBySession/:sessionId', api.tableInfoBySession);
-app.get('/api/playerInfo', api.playerInfo);
 app.get('/api/roundResults', api.roundResults);
+app.get('/api/createTable', api.createTable);
+app.post('/api/joinTable', api.joinTable);
+app.get('/api/leaveTable', api.leaveTable);
+
+// player api
+app.get('/api/playerInfo', api.playerInfo);
+
 
 // app.post('/api/createTable', api.createTable);
-app.post('/api/joinTable', api.joinTable);
+
 // app.post('/api/leaveTable', api.leaveTable);
 // app.post('/api/incrementPlayerStats', api.incrementPlayerStats);
 // app.post('/api/playMove', api.playMove);
 
 // make all requests GET for testing purposes
-app.get('/api/createTable', api.createTable);
+
 // app.get('/api/joinTable', api.joinTable);
-app.get('/api/leaveTable', api.leaveTable);
+
 app.get('/api/incrementPlayerStats', api.incrementPlayerStats);
 app.get('/api/playMove', api.playMove);
 
