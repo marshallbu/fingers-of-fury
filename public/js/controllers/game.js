@@ -70,6 +70,10 @@ define([
         $scope.game.playerOrderPredicate = 'lastJoined';
       };
 
+      $scope.$on('$viewContentLoaded', function () {
+        console.log('content loaded?');
+      });
+
       socket.on('game:player:joined', function(data) {
         $scope.game.players = Player.query({tableId: $scope.game.table.id});
       });

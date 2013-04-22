@@ -34,8 +34,6 @@ define(['angular', 'app'], function (angular, app) {
         query: {method: 'GET', params:{tableId: '@tableId'}, isArray: true}
       });
     });
-
-  // app.factory('Player', function ())
   
   return app;
 });

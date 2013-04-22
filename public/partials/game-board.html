@@ -1,5 +1,12 @@
 <section class="game-board-view" ng-controller="GameBoardCtrl">
 
+  <div class="game-status-container">
+    <div class="table-info">
+      <div class="table-round"></div>
+      <div class="table-move"></div>
+    </div>
+  </div>
+
   <div ng-repeat="player in game.players | orderBy:game.playerOrderPredicate">
     <div class="player player-{{$index}}">
       <h3>{{player.name}}</h3>

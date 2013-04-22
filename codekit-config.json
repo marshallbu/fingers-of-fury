@@ -2,15 +2,15 @@
   "CodeKitInfo" : "This is a CodeKit project configuration file. It is designed to sync project settings across multiple machines. Modifying the contents of this file can be a poor life decision if you don't know what you're doing. This file is not useful unless accompanied by the project that created it in CodeKit. For more information, see: http:\/\/incident57.com\/codekit",
   "creatorBuild" : "8283",
   "files" : {
-    "\/mobile\/js\/app.js" : {
+    "\/routes\/socket.js" : {
       "ignoreWasSetByUser" : 1,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/mobile\/js\/app.js",
+      "inputAbbreviatedPath" : "\/routes\/socket.js",
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/mobile\/js\/app-ck.js",
+      "outputAbbreviatedPath" : "\/routes\/socket-ck.js",
       "fileType" : 64
     },
     "\/public\/js\/lib\/bootstrap.min.js" : {
@@ -55,26 +55,6 @@
       "outputAbbreviatedPath" : "\/controllers\/api-ck.js",
       "fileType" : 64
     },
-    "\/public\/index.html" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/public\/index.html",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
-    "\/app.js" : {
-      "ignoreWasSetByUser" : 1,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/app.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/app-ck.js",
-      "fileType" : 64
-    },
     "\/public\/img\/blood_strike.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -97,6 +77,35 @@
       "initialSize" : 145775,
       "fileType" : 8192
     },
+    "\/public\/index.html" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/public\/index.html",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
+    "\/app.js" : {
+      "ignoreWasSetByUser" : 1,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/app.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/app-ck.js",
+      "fileType" : 64
+    },
+    "\/public\/styles\/css\/bootstrap.min.css" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/public\/styles\/css\/bootstrap.min.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
+    },
     "\/mobile\/styles\/less\/elements.less" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -110,6 +119,15 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
+    "\/mobile\/styles\/css\/main.css" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/mobile\/styles\/css\/main.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
+    },
     "\/public\/js\/routes.js" : {
       "ignoreWasSetByUser" : 1,
       "ignore" : 1,
@@ -121,14 +139,16 @@
       "outputAbbreviatedPath" : "\/public\/js\/routes-ck.js",
       "fileType" : 64
     },
-    "\/mobile\/styles\/css\/main.css" : {
+    "\/mobile\/img\/glyphicons-halflings.png" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
+      "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/mobile\/styles\/css\/main.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
+      "inputAbbreviatedPath" : "\/mobile\/img\/glyphicons-halflings.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/mobile\/img\/glyphicons-halflings.png",
+      "initialSize" : 12799,
+      "fileType" : 8192
     },
     "\/mobile\/styles\/less\/custom-mixins.less" : {
       "ignoreWasSetByUser" : 0,
@@ -142,28 +162,6 @@
       "strictImports" : 0,
       "fileType" : 1,
       "debugStyle" : 0
-    },
-    "\/mobile\/img\/glyphicons-halflings.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/mobile\/img\/glyphicons-halflings.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/mobile\/img\/glyphicons-halflings.png",
-      "initialSize" : 12799,
-      "fileType" : 8192
-    },
-    "\/public\/js\/lib\/require-jquery.js" : {
-      "ignoreWasSetByUser" : 1,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/public\/js\/lib\/require-jquery.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/public\/js\/lib\/require-jquery-ck.js",
-      "fileType" : 64
     },
     "\/mobile\/img\/board.jpg" : {
       "ignoreWasSetByUser" : 0,
@@ -196,14 +194,25 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 16
     },
-    "\/public\/styles\/css\/bootstrap.min.css" : {
+    "\/mobile\/js\/main.js" : {
+      "ignoreWasSetByUser" : 1,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/mobile\/js\/main.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/mobile\/js\/main-ck.js",
+      "fileType" : 64
+    },
+    "\/public\/partials\/game-board.html" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/public\/styles\/css\/bootstrap.min.css",
+      "inputAbbreviatedPath" : "\/public\/partials\/game-board.html",
       "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
+      "fileType" : 2048
     },
     "\/public\/styles\/less\/custom-fonts.less" : {
       "ignoreWasSetByUser" : 0,
@@ -242,15 +251,6 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/public\/partials\/game-board.html" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/public\/partials\/game-board.html",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
     "\/public\/js\/lib\/jquery-1.9.1.min.js" : {
       "ignoreWasSetByUser" : 1,
       "ignore" : 1,
@@ -262,15 +262,15 @@
       "outputAbbreviatedPath" : "\/public\/js\/lib\/jquery-1.9.1.min-ck.js",
       "fileType" : 64
     },
-    "\/mobile\/js\/main.js" : {
+    "\/public\/js\/lib\/require-jquery.js" : {
       "ignoreWasSetByUser" : 1,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/mobile\/js\/main.js",
+      "inputAbbreviatedPath" : "\/public\/js\/lib\/require-jquery.js",
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/mobile\/js\/main-ck.js",
+      "outputAbbreviatedPath" : "\/public\/js\/lib\/require-jquery-ck.js",
       "fileType" : 64
     },
     "\/public\/styles\/less\/main.less" : {
@@ -350,6 +350,17 @@
       "initialSize" : 8777,
       "fileType" : 8192
     },
+    "\/public\/js\/directives\/directives.js" : {
+      "ignoreWasSetByUser" : 1,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/public\/js\/directives\/directives.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/public\/js\/directives\/directives-ck.js",
+      "fileType" : 64
+    },
     "\/media\/rock.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -405,17 +416,6 @@
       "outputAbbreviatedPath" : "\/mobile\/js\/services\/services-ck.js",
       "fileType" : 64
     },
-    "\/public\/img\/thefinger.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/public\/img\/thefinger.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/public\/img\/thefinger.png",
-      "initialSize" : 132154,
-      "fileType" : 8192
-    },
     "\/media\/peasant.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -427,15 +427,26 @@
       "initialSize" : 87909,
       "fileType" : 8192
     },
-    "\/public\/js\/main.js" : {
+    "\/public\/img\/thefinger.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/public\/img\/thefinger.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/public\/img\/thefinger.png",
+      "initialSize" : 132154,
+      "fileType" : 8192
+    },
+    "\/controllers\/mobile.js" : {
       "ignoreWasSetByUser" : 1,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/public\/js\/main.js",
+      "inputAbbreviatedPath" : "\/controllers\/mobile.js",
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/public\/js\/main-ck.js",
+      "outputAbbreviatedPath" : "\/controllers\/mobile-ck.js",
       "fileType" : 64
     },
     "\/public\/js\/lib\/underscore-min.js" : {
@@ -449,15 +460,15 @@
       "outputAbbreviatedPath" : "\/public\/js\/lib\/underscore-min-ck.js",
       "fileType" : 64
     },
-    "\/controllers\/mobile.js" : {
+    "\/public\/js\/main.js" : {
       "ignoreWasSetByUser" : 1,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/controllers\/mobile.js",
+      "inputAbbreviatedPath" : "\/public\/js\/main.js",
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/controllers\/mobile-ck.js",
+      "outputAbbreviatedPath" : "\/public\/js\/main-ck.js",
       "fileType" : 64
     },
     "\/mobile\/styles\/less\/main.less" : {
@@ -474,8 +485,8 @@
       "debugStyle" : 0
     },
     "\/public\/js\/lib\/angular\/angular-resource.min.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignoreWasSetByUser" : 1,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/public\/js\/lib\/angular\/angular-resource.min.js",
@@ -546,9 +557,20 @@
       "outputAbbreviatedPath" : "\/public\/js\/app-ck.js",
       "fileType" : 64
     },
+    "\/lib\/generator\/index.js" : {
+      "ignoreWasSetByUser" : 1,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/lib\/generator\/index.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/lib\/generator\/index-ck.js",
+      "fileType" : 64
+    },
     "\/public\/js\/lib\/angular\/angular.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignoreWasSetByUser" : 1,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/public\/js\/lib\/angular\/angular.js",
@@ -566,17 +588,6 @@
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/public\/js\/services\/services-ck.js",
-      "fileType" : 64
-    },
-    "\/lib\/generator\/index.js" : {
-      "ignoreWasSetByUser" : 1,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/lib\/generator\/index.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/lib\/generator\/index-ck.js",
       "fileType" : 64
     },
     "\/media\/blood_strike.png" : {
@@ -710,8 +721,8 @@
       "fileType" : 8192
     },
     "\/public\/js\/lib\/angular\/angular-resource.js" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignoreWasSetByUser" : 1,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/public\/js\/lib\/angular\/angular-resource.js",
@@ -720,15 +731,15 @@
       "outputAbbreviatedPath" : "\/public\/js\/lib\/angular\/angular-resource-ck.js",
       "fileType" : 64
     },
-    "\/routes\/socket.js" : {
+    "\/mobile\/js\/app.js" : {
       "ignoreWasSetByUser" : 1,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/routes\/socket.js",
+      "inputAbbreviatedPath" : "\/mobile\/js\/app.js",
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/routes\/socket-ck.js",
+      "outputAbbreviatedPath" : "\/mobile\/js\/app-ck.js",
       "fileType" : 64
     }
   },
