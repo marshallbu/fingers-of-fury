@@ -2,16 +2,16 @@
   "CodeKitInfo" : "This is a CodeKit project configuration file. It is designed to sync project settings across multiple machines. Modifying the contents of this file can be a poor life decision if you don't know what you're doing. This file is not useful unless accompanied by the project that created it in CodeKit. For more information, see: http:\/\/incident57.com\/codekit",
   "creatorBuild" : "8283",
   "files" : {
-    "\/routes\/socket.js" : {
-      "ignoreWasSetByUser" : 1,
-      "ignore" : 1,
+    "\/media\/peasant3.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/routes\/socket.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/routes\/socket-ck.js",
-      "fileType" : 64
+      "inputAbbreviatedPath" : "\/media\/peasant3.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/media\/peasant3.png",
+      "initialSize" : 95420,
+      "fileType" : 8192
     },
     "\/public\/js\/lib\/bootstrap.min.js" : {
       "ignoreWasSetByUser" : 1,
@@ -77,15 +77,6 @@
       "initialSize" : 145775,
       "fileType" : 8192
     },
-    "\/public\/index.html" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/public\/index.html",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
     "\/app.js" : {
       "ignoreWasSetByUser" : 1,
       "ignore" : 1,
@@ -96,6 +87,15 @@
       "syntaxCheckerStyle" : 0,
       "outputAbbreviatedPath" : "\/app-ck.js",
       "fileType" : 64
+    },
+    "\/public\/index.html" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/public\/index.html",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
     },
     "\/public\/styles\/css\/bootstrap.min.css" : {
       "ignoreWasSetByUser" : 0,
@@ -119,26 +119,6 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/mobile\/styles\/css\/main.css" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/mobile\/styles\/css\/main.css",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
-    },
-    "\/public\/js\/routes.js" : {
-      "ignoreWasSetByUser" : 1,
-      "ignore" : 1,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/public\/js\/routes.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/public\/js\/routes-ck.js",
-      "fileType" : 64
-    },
     "\/mobile\/img\/glyphicons-halflings.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -149,6 +129,15 @@
       "outputAbbreviatedPath" : "\/mobile\/img\/glyphicons-halflings.png",
       "initialSize" : 12799,
       "fileType" : 8192
+    },
+    "\/mobile\/styles\/css\/main.css" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/mobile\/styles\/css\/main.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
     },
     "\/mobile\/styles\/less\/custom-mixins.less" : {
       "ignoreWasSetByUser" : 0,
@@ -163,16 +152,27 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/mobile\/img\/board.jpg" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+    "\/public\/js\/lib\/require-jquery.js" : {
+      "ignoreWasSetByUser" : 1,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/mobile\/img\/board.jpg",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/mobile\/img\/board.jpg",
-      "initialSize" : 621129,
-      "fileType" : 4096
+      "inputAbbreviatedPath" : "\/public\/js\/lib\/require-jquery.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/public\/js\/lib\/require-jquery-ck.js",
+      "fileType" : 64
+    },
+    "\/mobile\/js\/main.js" : {
+      "ignoreWasSetByUser" : 1,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/mobile\/js\/main.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/mobile\/js\/main-ck.js",
+      "fileType" : 64
     },
     "\/mobile\/js\/routes.js" : {
       "ignoreWasSetByUser" : 1,
@@ -194,16 +194,16 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 16
     },
-    "\/mobile\/js\/main.js" : {
-      "ignoreWasSetByUser" : 1,
-      "ignore" : 1,
+    "\/mobile\/img\/board.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/mobile\/js\/main.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/mobile\/js\/main-ck.js",
-      "fileType" : 64
+      "inputAbbreviatedPath" : "\/mobile\/img\/board.jpg",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/mobile\/img\/board.jpg",
+      "initialSize" : 621129,
+      "fileType" : 4096
     },
     "\/public\/partials\/game-board.html" : {
       "ignoreWasSetByUser" : 0,
@@ -213,19 +213,6 @@
       "inputAbbreviatedPath" : "\/public\/partials\/game-board.html",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
-    },
-    "\/public\/styles\/less\/custom-fonts.less" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/public\/styles\/less\/custom-fonts.less",
-      "outputStyle" : 0,
-      "shouldRunBless" : 0,
-      "outputAbbreviatedPath" : "\/public\/styles\/css\/custom-fonts.css",
-      "strictImports" : 0,
-      "fileType" : 1,
-      "debugStyle" : 0
     },
     "\/public\/img\/board.jpg" : {
       "ignoreWasSetByUser" : 0,
@@ -251,6 +238,19 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
+    "\/public\/styles\/less\/custom-fonts.less" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/public\/styles\/less\/custom-fonts.less",
+      "outputStyle" : 0,
+      "shouldRunBless" : 0,
+      "outputAbbreviatedPath" : "\/public\/styles\/css\/custom-fonts.css",
+      "strictImports" : 0,
+      "fileType" : 1,
+      "debugStyle" : 0
+    },
     "\/public\/js\/lib\/jquery-1.9.1.min.js" : {
       "ignoreWasSetByUser" : 1,
       "ignore" : 1,
@@ -262,15 +262,15 @@
       "outputAbbreviatedPath" : "\/public\/js\/lib\/jquery-1.9.1.min-ck.js",
       "fileType" : 64
     },
-    "\/public\/js\/lib\/require-jquery.js" : {
+    "\/public\/js\/routes.js" : {
       "ignoreWasSetByUser" : 1,
       "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/public\/js\/lib\/require-jquery.js",
+      "inputAbbreviatedPath" : "\/public\/js\/routes.js",
       "outputStyle" : 1,
       "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/public\/js\/lib\/require-jquery-ck.js",
+      "outputAbbreviatedPath" : "\/public\/js\/routes-ck.js",
       "fileType" : 64
     },
     "\/public\/styles\/less\/main.less" : {
@@ -557,6 +557,17 @@
       "outputAbbreviatedPath" : "\/public\/js\/app-ck.js",
       "fileType" : 64
     },
+    "\/public\/img\/avatar\/av-class1.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/public\/img\/avatar\/av-class1.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/public\/img\/avatar\/av-class1.png",
+      "initialSize" : 46847,
+      "fileType" : 8192
+    },
     "\/lib\/generator\/index.js" : {
       "ignoreWasSetByUser" : 1,
       "ignore" : 1,
@@ -590,6 +601,15 @@
       "outputAbbreviatedPath" : "\/public\/js\/services\/services-ck.js",
       "fileType" : 64
     },
+    "\/public\/partials\/game-intro.html" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/public\/partials\/game-intro.html",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
     "\/media\/blood_strike.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -601,14 +621,16 @@
       "initialSize" : 79644,
       "fileType" : 8192
     },
-    "\/public\/partials\/game-intro.html" : {
+    "\/media\/samurai.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/public\/partials\/game-intro.html",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
+      "inputAbbreviatedPath" : "\/media\/samurai.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/media\/samurai.png",
+      "initialSize" : 103912,
+      "fileType" : 8192
     },
     "\/public\/img\/glyphicons-halflings.png" : {
       "ignoreWasSetByUser" : 0,
@@ -619,17 +641,6 @@
       "processed" : 0,
       "outputAbbreviatedPath" : "\/public\/img\/glyphicons-halflings.png",
       "initialSize" : 12799,
-      "fileType" : 8192
-    },
-    "\/media\/samurai.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/media\/samurai.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/media\/samurai.png",
-      "initialSize" : 103912,
       "fileType" : 8192
     },
     "\/test\/redis.js" : {
@@ -654,6 +665,15 @@
       "outputAbbreviatedPath" : "\/public\/js\/lib\/underscore.string.min-ck.js",
       "fileType" : 64
     },
+    "\/mobile\/partials\/game-control-default.html" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/mobile\/partials\/game-control-default.html",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
     "\/media\/scissors.png" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -664,15 +684,6 @@
       "outputAbbreviatedPath" : "\/media\/scissors.png",
       "initialSize" : 158514,
       "fileType" : 8192
-    },
-    "\/mobile\/partials\/game-control-default.html" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/mobile\/partials\/game-control-default.html",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
     },
     "\/public\/img\/scissors.png" : {
       "ignoreWasSetByUser" : 0,
@@ -709,16 +720,16 @@
       "initialSize" : 87776,
       "fileType" : 8192
     },
-    "\/media\/peasant3.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+    "\/routes\/socket.js" : {
+      "ignoreWasSetByUser" : 1,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/media\/peasant3.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/media\/peasant3.png",
-      "initialSize" : 95420,
-      "fileType" : 8192
+      "inputAbbreviatedPath" : "\/routes\/socket.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/routes\/socket-ck.js",
+      "fileType" : 64
     },
     "\/public\/js\/lib\/angular\/angular-resource.js" : {
       "ignoreWasSetByUser" : 1,

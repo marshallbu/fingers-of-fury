@@ -95,10 +95,43 @@ section.game-board-view {
   height: 100%;
   position: relative;
 
+  div.game-status-container {
+    font-family:'Papyrus-Regular';
+    font-size: 3.143em;
+    line-height: 1.429em;
+    .text-shadow(0em, 0em, 0.071em, rgba(0, 0, 0, 0.5));
+    width: 500px;
+    margin: 0 auto;
+    text-align: center;
+
+    div.table-info {
+      // text-align: left;
+
+    }
+  }
+
   div.player {
     height: 200px;
     width: 200px;
-    border: 2px solid #111;
+    border: 1px solid #111;
+    background-color: rgba(0, 0, 0, .5);
+    color: #fff;
+    .box-shadow(0px 0px 7px 1px rgba(0, 0, 0, .4));
+
+    &.player-class1 {
+      background-image: url('@{imgBaseUrl}avatar/av-class1.png');
+      background-size: cover;
+    }
+
+    h3.player-name {
+      margin: 0;
+      padding: 10px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: rgba(0, 0, 0, .5);
+    }
 
     &.player-0 {
       position: absolute;

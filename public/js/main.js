@@ -38,6 +38,7 @@ require([
   'angularResource',
   'app',
   'services/services',
+  'directives/directives',
   'controllers/game',
   'routes'
 ], function ($, _, _s, bootstrap, io, angular, angularResource, app, services, game) {

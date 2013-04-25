@@ -13,10 +13,14 @@ define([
       templateUrl: 'partials/game-control-intro.html'
     });
 
-    $routeProvider.when('/control/:sessionId', {
+    // $routeProvider.when('/control/:sessionId', {
+    //   templateUrl: 'partials/game-control.html'
+    // });
+      
+    $routeProvider.when('/control/:sessionId/:playerName', {
       templateUrl: 'partials/game-control.html'
     });
-      
+
     $routeProvider.otherwise({redirectTo: '/'});
 
   }]);

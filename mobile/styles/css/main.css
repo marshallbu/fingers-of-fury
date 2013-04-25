@@ -59,6 +59,21 @@ section.game-controller div.game-controller-intro {
 section.game-controller div.game-controller-intro form.player-form div.form-buttons button {
   margin-bottom: 10px;
 }
+section.game-controller div.game-status-container {
+  font-family: 'Papyrus-Regular';
+  font-size: 1.500em;
+  text-shadow: 0em 0em 0.071em rgba(0, 0, 0, 0.5);
+  filter: dropshadow(color=rgba(0, 0, 0, 0.5), offx=0em, offy=0em);
+  margin: 0 auto;
+  text-align: center;
+}
+section.game-controller div.game-status-container div.controller-info div.controller-buttons {
+  padding: 20px 0;
+}
+section.game-controller div.game-status-container div.controller-info div.controller-buttons a.control img {
+  width: 100px;
+  height: 100px;
+}
 /* Large desktop */
 @media (min-width: 1200px) {
   

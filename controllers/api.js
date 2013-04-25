@@ -6,6 +6,10 @@ var _ = require('underscore')
   , redis = require('redis')
   , redisClient = redis.createClient();
 var generator = require('../lib/generator');
+var _ = require('underscore');
+
+_.str = require('underscore.string');
+_.mixin(_.str.exports());
 
 // -----------------------
 // internal functions
@@ -51,6 +55,14 @@ var _updateTableStats = function(tableId, data) {
   redisClient.hmset('table:' + tableId, data);
 }
 
+var _getPlayerCount = function(playerSetKey) {
+  console.log('PRIVATE API CALL: _getPlayerCount');
+
+  redisClient.smembers(playerSetKey, function(err, resp) {
+    return resp.length;
+  });
+}
+
 
 // ------------------------
 // API functions
@@ -79,6 +91,7 @@ module.exports.createTable = function(req, res, next) {
       created: Date.now().toString(),
       // players: [], // can't have anything other than strings in a redis hash
       players: tableId + ':players', // a redis set of player keys
+      playerCount: "0",
       rounds: "0",
       winner: ""
     };
@@ -166,7 +179,7 @@ module.exports.tableInfoBySession = function(req, res, next) {
       });
     } else {
       tableId = resp;
-      console.log('blah');
+      // console.log('blah');
 
       // get the table stats with the table id
       // this should probably get condensed with some sort of shim
@@ -232,27 +245,52 @@ module.exports.joinTable = function(req, res, next) {
     lastJoined: Date.now().toString()
   };
 
+  var playersSetKey = 'table:' + tableId + ':players';
   var playerKey = 'table:' + tableId + ':player:' + playerName;
 
-  redisClient.hgetall(playerKey, function (err, resp) {
-    if (resp === null) {
-      // redisClient.set('table:' + tableId + ':player:' + name, player);
-      redisClient.hmset(playerKey, player);
+  //there is a probably a cleaner way to do this with the multi() call
 
-      redisClient.hgetall('table:' + tableId, function (err, resp) {
-        // need to check the table number before adding new players so we don't go over 4/max
-        tableStats = resp;
-        redisClient.sadd(tableStats.players, playerKey);
-        // _updateTableStats(tableId, tableStats); // no need to do this anymore for the time being
+  redisClient.smembers(playersSetKey, function(err, resp) {
+    var playerCount = resp.length;
+
+    if(playerCount >= 4) {
+
+      res.json({
+        error: 'playerMax',
+        message: 'Max amount of players already joined ' + tableId,
+        count: playerCount
       });
-
-      res.json(player);
 
     } else {
-      res.json({
-        error: 'Player already exists at table ' + tableId
+
+      redisClient.hgetall(playerKey, function (err, resp) {
+        if (resp === null) {
+          // redisClient.set('table:' + tableId + ':player:' + name, player);
+          redisClient.hmset(playerKey, player);
+
+          redisClient.hgetall('table:' + tableId, function (err, resp) {
+            // need to check the table number before adding new players so we don't go over 4/max
+            tableStats = resp;
+            redisClient.sadd(tableStats.players, playerKey);
+            tableStats.playerCount = playerCount + 1;
+            _updateTableStats(tableId, tableStats);
+          });
+
+          res.json(player);
+
+        } else {
+
+          res.json({
+            error: 'playerAlreadyJoined',
+            message: 'Player already exists at table ' + tableId
+          });
+
+        }
+
       });
-    }
+
+    } //else
+
   });
 
   // @todo trigger notification
@@ -374,6 +412,56 @@ module.exports.playerInfo = function(req, res, next) {
   });
 };
 
+/**
+ * returns player info using the table session they are associated with
+ * @param sessionId
+ * @param playerName
+ * 
+ *
+ * @requestType GET
+ */
+module.exports.playerInfoBySession = function(req, res, next) {
+  console.log('API REQUEST: playerInfoBySession');
+
+  var sessionId = req.params.sessionId;
+  var playerName = req.params.playerName;
+  var player;
+
+  // var playerKey = 'table:' + tableId + ':player:' + playerName;
+
+  redisClient.get('table:' + sessionId, function (err, resp) {
+    console.log(resp);
+
+    if (resp === null) {
+      res.json({
+        error: 'Table session does not exist'
+      });
+    } else {
+      tableId = resp;
+
+      var playerKey = tableId + ':player:' + playerName;
+
+      redisClient.hgetall(playerKey, function (err, resp) {
+        if (resp === null) {
+
+          res.json({
+            error: 'Player does not exist'
+          });
+
+        } else {
+
+          player = resp;
+          
+          res.json(player);
+        }
+
+      });
+
+    }
+  });
+
+};
+
 
 /**
  * submits player move
@@ -384,10 +472,65 @@ module.exports.playerInfo = function(req, res, next) {
 module.exports.playMove = function(req, res, next) {
   console.log('API REQUEST: playMove');
 
-  var name = req.name
-    , type = req.type;
+  var tableId = req.body.tableId;
+  var playerName = req.body.playerName;
+  var playerMove = req.body.playerMove;
 
-  res.json({
+  console.log('player move:', req.body);
+
+  var tableMovesQueue = 'table:' + tableId + ':moves:round:current';
+
+  var multi = redisClient.multi();
+
+  multi.hgetall('table:' + tableId);
+  multi.smembers('table:' + tableId + ':players');
+  multi.exists(tableMovesQueue);
+
+  multi.exec(function(err, replies) {
+    console.log('first multi:', replies);
+    // trust that the table we are looking for is there
+    var tableStats = replies[0];
+    var playerKeys = replies[1];
+    var movesExist = replies[2];
+
+    var moveMax = playerKeys.length;
+
+    var multi = redisClient.multi();
+
+    // if there are no moves already current, create a new hash that is current
+    // if (movesExist === 0) {
+    //   multi.hset(tableMovesQueue, 'playerName:' + playerMove);
+    // }
+    
+    multi.hsetnx(tableMovesQueue, playerName, playerMove);
+    multi.hlen(tableMovesQueue);
+
+    multi.exec(function(err, replies) {
+      var success = replies[0];
+      var length = replies[1];
+
+      if (success === 1) {
+        // need to do something here if this is the "last" move
+        if (length === moveMax) {
+          // need to update table stats and change round key from current to the round number
+          // then, trigger some game brain
+        }
+
+        res.json({
+          success: 'Move played successfully'
+        });
+
+        // need to do something here if this is the "last" move
+      } else {
+        res.json({
+          error: 'Move already played in current round'
+        });
+      }
+
+
+
+    });
+
   });
 
   // @todo trigger notification

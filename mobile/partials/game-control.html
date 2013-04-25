@@ -1,5 +1,27 @@
-<section class="game-controller" ng-controller="GameCtrl">
-  <h1 class="main-title">Fingers of Fury</h1>
+<section class="game-controller" ng-controller="GamePadCtrl">
+
+  <div class="game-status-container" controller-info>
+    <div class="controller-info">
+
+      <div ng-show="!game.table.playerCount || game.table.playerCount == 1" class="controller-waiting">
+        Be patient, warrior...<br/>
+        <br/>
+        There are none who are brave enough to face you... yet.
+      </div>
+
+      <div ng-hide="!game.table.playerCount || game.table.playerCount == 1" class="controller-gamepad">
+        <!-- game buttons and controls should go in here -->
+        <div class="controller-title">Choose your technique!</div>
+        <div class="controller-buttons">
+          <a class="control" ng-click="playerMove(MOVE_ROCK)"><img src="/img/rock.png" /></a>
+          <a class="control" ng-click="playerMove(MOVE_PAPER)"><img src="/img/paper.png" /></a>
+          <a class="control" ng-click="playerMove(MOVE_SCISSORS)"><img src="/img/scissors.png" /></a>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
 
 
 </section>

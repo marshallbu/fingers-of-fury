@@ -1,15 +1,20 @@
 <section class="game-board-view" ng-controller="GameBoardCtrl">
 
-  <div class="game-status-container">
+  <div class="game-status-container" table-info>
     <div class="table-info">
-      <div class="table-round"></div>
-      <div class="table-move"></div>
+      <div ng-show="shouldDisplayInfo()" class="table-round">Round: {{roundDisplay()}}</div>
+      <div ng-show="shouldDisplayInfo()" class="table-action"></div>
+      <div ng-show="!game.table.playerCount || game.table.playerCount == 1" class="table-waiting">Waiting for other warriors...</div>
+      <div ng-hide="!game.table.playerCount || game.table.playerCount == 1" class="table-choose">Choose your technique!</div>
+      <div ng-show="debug" class="table-session">Session: {{game.table.session}}</div>
+      <div ng-show="shouldDisplayInfo()" class="table-move"></div>
     </div>
+
   </div>
 
   <div ng-repeat="player in game.players | orderBy:game.playerOrderPredicate">
-    <div class="player player-{{$index}}">
-      <h3>{{player.name}}</h3>
+    <div class="player player-{{$index}} player-class1">
+      <h3 class="player-name">{{player.name}}</h3>
 
     </div>
   </div>
@@ -20,11 +25,8 @@
   (function() {
     // console.log();
 
-    console.log('test');
+    // console.log('test');
 
-    $('div.player').load(function() {
-      this.css('background', 'red');
-    })
     
   }());
 

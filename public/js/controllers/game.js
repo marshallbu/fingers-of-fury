@@ -35,6 +35,7 @@ define([
     function GameBoardCtrl($scope, socket, $location, $routeParams, $http, $log, Player) {
       $scope.game = $scope.game || {};
       var self = this;
+      // $scope.debug = true;
 
       if ($routeParams.sessionId) {
         // this stuff should get lumped into an angular service
@@ -62,6 +63,46 @@ define([
         _initBoard();
       }
      
+      // checker for when to show stuff on the view
+      $scope.shouldDisplayInfo = function() {
+        var result = true;
+
+        if (!$scope.game.table) {
+          result = false;
+        }
+        else if (!($scope.game.table.playerCount) || $scope.game.table.playerCount <= 1) {
+          result = false;
+        }
+
+        // $log.log('should display table? ', result);
+        return result;
+      }
+
+      // display the current round, instead of the amount of rounds that have been played
+      $scope.roundDisplay = function() {
+        if ($scope.game.table) {
+          return parseInt($scope.game.table.rounds) + 1;
+        }
+      }
+
+      $scope.$on('$viewContentLoaded', function () {
+        $log.log('content loaded?');
+      });
+
+      socket.on('game:player:joined', function(data) {
+        $scope.game.players = Player.query({tableId: $scope.game.table.id});
+
+        // should get our latest table stats from this
+        console.log('after player join:', data);
+        if (data.error) {
+          $log.error(data.error);
+        } else {
+          $scope.game.table = data.tableStats;
+        }
+        
+      });
+
+      // private stuff
       var _initBoard = function() {
         // the game object scope should already be setup
 
@@ -69,14 +110,6 @@ define([
 
         $scope.game.playerOrderPredicate = 'lastJoined';
       };
-
-      $scope.$on('$viewContentLoaded', function () {
-        console.log('content loaded?');
-      });
-
-      socket.on('game:player:joined', function(data) {
-        $scope.game.players = Player.query({tableId: $scope.game.table.id});
-      });
 
     }
   ]);

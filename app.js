@@ -37,20 +37,21 @@ app.get('/api/leaveTable', api.leaveTable);
 
 // player api
 app.get('/api/playerInfo', api.playerInfo);
-
+app.get('/api/playerInfoBySession/:playerName/:sessionId', api.playerInfoBySession);
+app.post('/api/playMove', api.playMove);
 
 // app.post('/api/createTable', api.createTable);
 
 // app.post('/api/leaveTable', api.leaveTable);
 // app.post('/api/incrementPlayerStats', api.incrementPlayerStats);
-// app.post('/api/playMove', api.playMove);
+
 
 // make all requests GET for testing purposes
 
 // app.get('/api/joinTable', api.joinTable);
 
 app.get('/api/incrementPlayerStats', api.incrementPlayerStats);
-app.get('/api/playMove', api.playMove);
+// app.get('/api/playMove', api.playMove);
 
 
 // app.listen(3000);

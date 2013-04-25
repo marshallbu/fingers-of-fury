@@ -87,10 +87,38 @@ section.game-board-view {
   height: 100%;
   position: relative;
 }
+section.game-board-view div.game-status-container {
+  font-family: 'Papyrus-Regular';
+  font-size: 3.143em;
+  line-height: 1.429em;
+  text-shadow: 0em 0em 0.071em rgba(0, 0, 0, 0.5);
+  filter: dropshadow(color=rgba(0, 0, 0, 0.5), offx=0em, offy=0em);
+  width: 500px;
+  margin: 0 auto;
+  text-align: center;
+}
 section.game-board-view div.player {
   height: 200px;
   width: 200px;
-  border: 2px solid #111;
+  border: 1px solid #111;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  -webkit-box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.4);
+}
+section.game-board-view div.player.player-class1 {
+  background-image: url('../../img/avatar/av-class1.png');
+  background-size: cover;
+}
+section.game-board-view div.player h3.player-name {
+  margin: 0;
+  padding: 10px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 section.game-board-view div.player.player-0 {
   position: absolute;
