@@ -40,7 +40,7 @@ define([
         $log.log(player);
 
         // let's join the game
-        $http.post('/api/joinTable', { tableId: $scope.game.table.id, name: player.name })
+        $http.post('/api/joinTable', { tableId: $scope.game.table.id, name: player.name, sessionId: $routeParams.sessionId })
           .success(function(response, status) {
             $log.log(response);
 

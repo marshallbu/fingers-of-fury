@@ -1,15 +1,282 @@
-/**
- * API stubbed out with fake data
- */
 var _ = require('underscore')
   , util = require('util')
   , redis = require('redis')
-  , redisClient = redis.createClient();
+  , redisClient = redis.createClient()
+  , mongoose = require('mongoose');
+
 var generator = require('../lib/generator');
 var _ = require('underscore');
 
 _.str = require('underscore.string');
 _.mixin(_.str.exports());
+
+// @todo move to config file
+var mongo = {
+  Server: 'localhost',
+  Db: 'fingers'
+};
+
+mongoose.connect('mongodb://' + mongo.Server + '/' + mongo.Db);
+var db = mongoose.connection;
+db.once('open', function callback() {
+  console.log('Connected to Server: ' + mongo.Server + ', DB: ' + mongo.Db);
+});
+db.on('error', console.error.bind(console, 'connection error:'));
+
+// schemas
+var Table = require('../models/table.js');
+var Player = require('../models/player.js');
+
+
+
+module.exports.createTable = function(req, res, next) {
+  console.log('API REQUEST: createTable');
+
+  var gameSession = generator.generateId(5, 'aA#');
+
+  var table = new Table({
+    session: gameSession,
+    url: 'http://' + req.headers.host + '/m/#/' + gameSession
+  });
+  table.save();
+
+  console.log(table);
+
+  res.json(table);
+};
+
+
+
+module.exports.tableInfo = function(req, res, next) {
+  console.log('API REQUEST: tableInfo - ', req.params);
+
+  Table.findOne({ _id: req.params.tableId }, function(err, table) {
+    if (err) {
+      console.log(err);
+      res.json({ error: 'Table does not exist' });
+    } else {
+      res.json(table);
+    }
+  });
+};
+
+
+
+module.exports.tableInfoBySession = function(req, res, next) {
+  console.log('API REQUEST: tableInfoBySession - ', req.params);
+
+  Table.findOne({ session: req.params.sessionId }, function(err, table) {
+    if (err) {
+      console.log(err);
+      res.json({ error: 'Table session does not exist' });
+    } else {
+      res.json(table);
+    }
+  });
+};
+
+
+
+module.exports.joinTable = function(req, res, next) {
+  console.log('API REQUEST: joinTable - ', req.body);
+
+  // check if player already exists
+  Player.findOne({ name: req.body.name }, function(err, existingPlayer) {
+    if (err) {
+      console.log(err);
+      res.json({ error: 'Error joining table' });
+    } else if (existingPlayer === null) {
+      // player does not exist, create new player
+      console.log('Creating new player: ' + req.body.name);
+      var player = new Player({
+        name: req.body.name,
+        currentGameSession: req.body.sessionId // @todo can only join one game at a time
+      });
+      player.save();
+      console.log(player);
+
+      // @todo update game table
+      Table.findOne({ session: req.body.sessionId }, function(err, table) {
+        if (err) {
+          console.log(err);
+          res.json({ error: 'Error updating table'});
+        } else if (table === null) {
+          console.log('Table doesn\'t exist by session: ' + req.body.sessionId);
+          res.json({ error: 'Table doesn\'t exist by session' });
+        } else {
+          console.log('Updating table with player');
+          var players = table.get('players');
+          console.log('***', players);
+          console.log('player: ', player);
+          players.push({ id: player.id, name: player.name });
+          console.log('new players: ', players);
+          table.set('players', players);
+          table.save();
+        }
+      });
+
+      res.json(player);
+    } else {
+      // player already exists, return existing player
+      console.log('Found existing player: ', existingPlayer);
+      // @todo update lastJoined property
+      // @todo update current game session if empty
+      //if (existingPlayer.currentGameSession && existingPlayer.currentGameSession !== req.body.sessionId) {
+      if (false) {
+        console.log('Player is already in another game');
+        res.json({ error: 'Player is already in another game' });
+      } else {
+        // update player's game session
+        console.log('updating current game session: ' + req.body.sessionId);
+        existingPlayer.set('currentGameSession', req.body.sessionId);
+        existingPlayer.save();
+        // update table's player list
+        Table.findOne({ session: req.body.sessionId }, function(err, table) {
+        if (err) {
+          console.log(err);
+          res.json({ error: 'Error updating table'});
+        } else if (table === null) {
+          console.log('Table doesn\'t exist by session: ' + req.body.sessionId);
+          res.json({ error: 'Table doesn\'t exist by session' });
+        } else {
+          console.log('Updating table with player (existing player)');
+          var players = table.get('players');
+          players.push({ id: existingPlayer.id, name: existingPlayer.name });
+          table.set('players', players);
+          table.save();
+        }
+      });
+
+        res.json(existingPlayer);
+      }
+    }
+  });
+
+/*
+
+  var self = this;
+
+  var tableId = req.body.tableId;
+  var playerName = req.body.name;
+
+  var player = {
+    name: playerName,
+    wins: 0,
+    total: 0,
+    state: 'undecided',
+    table: tableId,
+    created: Date.now().toString(),
+    lastJoined: Date.now().toString()
+  };
+
+  var playersSetKey = 'table:' + tableId + ':players';
+  var playerKey = 'table:' + tableId + ':player:' + playerName;
+
+  //there is a probably a cleaner way to do this with the multi() call
+
+  redisClient.smembers(playersSetKey, function(err, resp) {
+    var playerCount = resp.length;
+
+    if(playerCount >= 4) {
+
+      res.json({
+        error: 'playerMax',
+        message: 'Max amount of players already joined ' + tableId,
+        count: playerCount
+      });
+
+    } else {
+
+      redisClient.hgetall(playerKey, function (err, resp) {
+        if (resp === null) {
+          // redisClient.set('table:' + tableId + ':player:' + name, player);
+          redisClient.hmset(playerKey, player);
+
+          redisClient.hgetall('table:' + tableId, function (err, resp) {
+            // need to check the table number before adding new players so we don't go over 4/max
+            tableStats = resp;
+            redisClient.sadd(tableStats.players, playerKey);
+            tableStats.playerCount = playerCount + 1;
+            _updateTableStats(tableId, tableStats);
+          });
+
+          res.json(player);
+
+        } else {
+
+          res.json({
+            error: 'playerAlreadyJoined',
+            message: 'Player already exists at table ' + tableId
+          });
+
+        }
+
+      });
+
+    } //else
+
+  });
+*/
+  // @todo trigger notification
+};
+
+
+
+module.exports.playerInfoBySession = function(req, res, next) {
+  console.log('API REQUEST: playerInfoBySession - ', req.params);
+
+  Player.findOne({ name: req.params.playerName, currentGameSession: req.params.sessionId }, function(err, existingPlayer) {
+    if (err) {
+      console.log(err);
+      res.json({ error: 'Error getting player info by session' });
+    } else if (existingPlayer === null) {
+      // player does not exist
+      console.log('Player does not exist or is not in a current game session: ' + req.params.playerName);
+      res.json({ error: 'Player does not exist or is not in a game' });
+    } else {
+      // found player
+      console.log('Found player: ', existingPlayer);
+      res.json(existingPlayer);
+    }
+  });
+};
+
+
+
+module.exports.players = function(req, res, next) {
+  console.log('API REQUEST: players - ', req.params);
+
+  Table.findOne({ _id: req.params.tableId }, function(err, table) {
+    if (err) {
+      console.log(err);
+      res.json({ error: 'Error getting players for table' });
+    } else if (table === null) {
+      // table does not exist for that id
+      console.log('Table does not exist for id: ' + req.params.tableId);
+      res.json({ error: 'Table does not exist' });
+    } else {
+      // found table
+      console.log('Found table: ', table);
+      res.json(table.players);
+    }
+  });
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // -----------------------
 // internal functions
@@ -72,7 +339,7 @@ var _getPlayerCount = function(playerSetKey) {
  *
  * @requestType POST
  */
-module.exports.createTable = function(req, res, next) {
+module.exports.createTable2 = function(req, res, next) {
   console.log('API REQUEST: createTable');
 
   var callback = function(resp) {
@@ -118,7 +385,7 @@ module.exports.createTable = function(req, res, next) {
  *
  * @requestType GET
  */
-module.exports.tableInfo = function(req, res, next) {
+module.exports.tableInfo2 = function(req, res, next) {
   console.log('API REQUEST: tableInfo');
 
   var tableId = req.params.tableId;
@@ -161,7 +428,7 @@ module.exports.tableInfo = function(req, res, next) {
  *
  * @requestType GET
  */
-module.exports.tableInfoBySession = function(req, res, next) {
+module.exports.tableInfoBySession2 = function(req, res, next) {
   console.log('API REQUEST: tableInfoBySession');
 
   var tableSessionId = req.params.sessionId;
@@ -228,7 +495,7 @@ module.exports.tableInfoBySession = function(req, res, next) {
  *
  * @todo make players unique and portable across tables
  */
-module.exports.joinTable = function(req, res, next) {
+module.exports.joinTable2 = function(req, res, next) {
   console.log('API REQUEST: joinTable');
   var self = this;
 
@@ -321,7 +588,7 @@ module.exports.leaveTable = function(req, res, next) {
  *
  * @requestType GET
  */
-module.exports.players = function(req, res, next) {
+module.exports.players2 = function(req, res, next) {
   console.log('API REQUEST: players');
 
   var tableId = req.params.tableId;
@@ -420,7 +687,7 @@ module.exports.playerInfo = function(req, res, next) {
  *
  * @requestType GET
  */
-module.exports.playerInfoBySession = function(req, res, next) {
+module.exports.playerInfoBySession2 = function(req, res, next) {
   console.log('API REQUEST: playerInfoBySession');
 
   var sessionId = req.params.sessionId;

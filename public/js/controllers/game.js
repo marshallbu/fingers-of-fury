@@ -20,7 +20,7 @@ define([
 
         $scope.game.table = response;
 
-        console.log(Player.query({tableId: $scope.game.table.id}));
+        console.log(Player.query({tableId: $scope.game.table._id}));
       });
 
       $scope.game.name = 'test';
@@ -90,7 +90,7 @@ define([
       });
 
       socket.on('game:player:joined', function(data) {
-        $scope.game.players = Player.query({tableId: $scope.game.table.id});
+        $scope.game.players = Player.query({tableId: $scope.game.table._id});
 
         // should get our latest table stats from this
         console.log('after player join:', data);
@@ -106,7 +106,7 @@ define([
       var _initBoard = function() {
         // the game object scope should already be setup
 
-        $scope.game.players = Player.query({tableId: $scope.game.table.id});
+        $scope.game.players = Player.query({tableId: $scope.game.table._id});
 
         $scope.game.playerOrderPredicate = 'lastJoined';
       };
