@@ -121,7 +121,7 @@ define([
       }
 
       $scope.playerLeave = function() {
-
+        
       };
 
       $scope.playerMove = function(move) {

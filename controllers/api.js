@@ -166,13 +166,42 @@ module.exports.joinTable = function(req, res, next) {
 module.exports.leaveTable = function(req, res, next) {
   console.log('API REQUEST: leaveTable -', req.params);
 
-  var name = req.name;
+  // name, table session
+  // clear session from player
+  Player.findOne({ name: req.params.name, session: req.params.sessionId }, function(err, player) {
+    if (err) {
+      console.log(err);
+      res.json({ error: 'Error leaving table' });
+    } else if (player === null) {
+      // player doesn't exist
+      console.log('Player does not exist: ' + req.params.name);
+      res.json({ error: 'Player does not exist' });
+    } else {
+      player.set('currentGameSession', null);
+      player.save();
 
-  res.json({
-    result: 'success'
+      Table.findOne({ session: req.params.sessionId }, function(err, table) {
+        if (err) {
+          console.log(err);
+          res.json({ error: 'Error finding table'});
+        } else if (table === null) {
+          // table doesn't exist
+          console.log('Table does not exist: ' + req.params.sessionId);
+          res.json({ error: 'Error finding table for session'});
+        } else {
+          var players = table.get('players');
+          for (var i = 0; i < players.length; i++) {
+            if (players[i].name === req.params.name) {
+              players = players.splice(i);
+              break;
+            }
+          }
+          res.json({ players: players });
+        }
+      });
+      // return set of players left in game
+    }
   });
-
-  // @todo trigger notification
 };
 
 
@@ -407,7 +436,7 @@ module.exports.players = function(req, res, next) {
  * @requestType POST
  */
 module.exports.leaveTable = function(req, res, next) {
-  console.log('API REQUEST: leaveTable');
+  console.log('API REQUEST: leaveTable - ', req.params);
 
   var name = req.name;
 

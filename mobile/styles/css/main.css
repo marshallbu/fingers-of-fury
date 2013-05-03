@@ -74,6 +74,9 @@ section.game-controller div.game-status-container div.controller-info div.contro
   width: 100px;
   height: 100px;
 }
+section.game-controller div.game-status-container div.controller-info button.quit {
+  margin-top: 4em;
+}
 /* Large desktop */
 @media (min-width: 1200px) {
   

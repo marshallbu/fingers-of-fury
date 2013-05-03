@@ -77,6 +77,7 @@
       "initialSize" : 145775,
       "fileType" : 8192
     },
+<<<<<<< HEAD
     "\/public\/index.html" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -86,6 +87,8 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
+=======
+>>>>>>> leave player updates
     "\/app.js" : {
       "ignoreWasSetByUser" : 1,
       "ignore" : 1,
@@ -97,14 +100,30 @@
       "outputAbbreviatedPath" : "\/app-ck.js",
       "fileType" : 64
     },
-    "\/public\/styles\/css\/bootstrap.min.css" : {
+    "\/public\/index.html" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/public\/styles\/css\/bootstrap.min.css",
+      "inputAbbreviatedPath" : "\/public\/index.html",
       "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 16
+      "fileType" : 2048
+    },
+<<<<<<< HEAD
+    "\/public\/js\/routes.js" : {
+      "ignoreWasSetByUser" : 1,
+=======
+    "\/mobile\/styles\/less\/elements.less" : {
+      "ignoreWasSetByUser" : 0,
+>>>>>>> leave player updates
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/public\/js\/routes.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/public\/js\/routes-ck.js",
+      "fileType" : 64
     },
     "\/public\/js\/routes.js" : {
       "ignoreWasSetByUser" : 1,
@@ -123,12 +142,12 @@
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/mobile\/styles\/css\/main.css",
-      "outputAbbreviatedPath" : "No Output Path",
+      "outputAbbreviatedPath" : "\/No Output Path",
       "fileType" : 16
     },
     "\/mobile\/img\/glyphicons-halflings.png" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/mobile\/img\/glyphicons-halflings.png",
@@ -150,6 +169,18 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
+<<<<<<< HEAD
+=======
+    "\/public\/styles\/css\/bootstrap.min.css" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/public\/styles\/css\/bootstrap.min.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
+    },
+>>>>>>> leave player updates
     "\/public\/js\/lib\/require-jquery.js" : {
       "ignoreWasSetByUser" : 1,
       "ignore" : 1,
@@ -161,16 +192,16 @@
       "outputAbbreviatedPath" : "\/public\/js\/lib\/require-jquery-ck.js",
       "fileType" : 64
     },
-    "\/mobile\/js\/main.js" : {
-      "ignoreWasSetByUser" : 1,
-      "ignore" : 1,
+    "\/mobile\/img\/board.jpg" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/mobile\/js\/main.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/mobile\/js\/main-ck.js",
-      "fileType" : 64
+      "inputAbbreviatedPath" : "\/mobile\/img\/board.jpg",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/mobile\/img\/board.jpg",
+      "initialSize" : 621129,
+      "fileType" : 4096
     },
     "\/mobile\/js\/routes.js" : {
       "ignoreWasSetByUser" : 1,
@@ -183,11 +214,16 @@
       "outputAbbreviatedPath" : "\/mobile\/js\/routes-ck.js",
       "fileType" : 64
     },
+<<<<<<< HEAD
     "\/mobile\/img\/board.jpg" : {
+=======
+    "\/public\/styles\/css\/bootstrap-responsive.min.css" : {
+>>>>>>> leave player updates
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
+<<<<<<< HEAD
       "inputAbbreviatedPath" : "\/mobile\/img\/board.jpg",
       "processed" : 0,
       "outputAbbreviatedPath" : "\/mobile\/img\/board.jpg",
@@ -202,10 +238,26 @@
       "inputAbbreviatedPath" : "\/public\/styles\/css\/bootstrap-responsive.min.css",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 16
+=======
+      "inputAbbreviatedPath" : "\/public\/styles\/css\/bootstrap-responsive.min.css",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 16
+    },
+    "\/mobile\/js\/main.js" : {
+      "ignoreWasSetByUser" : 1,
+      "ignore" : 1,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/mobile\/js\/main.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/mobile\/js\/main-ck.js",
+      "fileType" : 64
+>>>>>>> leave player updates
     },
     "\/public\/styles\/less\/custom-fonts.less" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/public\/styles\/less\/custom-fonts.less",
@@ -227,9 +279,18 @@
       "initialSize" : 621129,
       "fileType" : 4096
     },
-    "\/public\/styles\/less\/custom-mixins.less" : {
+    "\/public\/partials\/game-board.html" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/public\/partials\/game-board.html",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
+    "\/public\/styles\/less\/custom-mixins.less" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/public\/styles\/less\/custom-mixins.less",
@@ -308,6 +369,17 @@
       "outputAbbreviatedPath" : "\/mobile\/js\/controllers\/game-ck.js",
       "fileType" : 64
     },
+    "\/media\/ninja.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/media\/ninja.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/media\/ninja.png",
+      "initialSize" : 92944,
+      "fileType" : 8192
+    },
     "\/public\/js\/lib\/angular\/angular.min.js" : {
       "ignoreWasSetByUser" : 1,
       "ignore" : 1,
@@ -319,16 +391,16 @@
       "outputAbbreviatedPath" : "\/public\/js\/lib\/angular\/angular.min-ck.js",
       "fileType" : 64
     },
-    "\/media\/ninja.png" : {
+    "\/models\/player.js" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/media\/ninja.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/media\/ninja.png",
-      "initialSize" : 92944,
-      "fileType" : 8192
+      "inputAbbreviatedPath" : "\/models\/player.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/models\/player-ck.js",
+      "fileType" : 64
     },
     "\/models\/player.js" : {
       "ignoreWasSetByUser" : 1,
@@ -373,8 +445,13 @@
       "fileType" : 64
     },
     "\/models\/table.js" : {
+<<<<<<< HEAD
       "ignoreWasSetByUser" : 1,
       "ignore" : 1,
+=======
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+>>>>>>> leave player updates
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/models\/table.js",
@@ -427,16 +504,16 @@
       "initialSize" : 161727,
       "fileType" : 8192
     },
-    "\/public\/img\/thefinger.png" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+    "\/mobile\/js\/services\/services.js" : {
+      "ignoreWasSetByUser" : 1,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/public\/img\/thefinger.png",
-      "processed" : 0,
-      "outputAbbreviatedPath" : "\/public\/img\/thefinger.png",
-      "initialSize" : 132154,
-      "fileType" : 8192
+      "inputAbbreviatedPath" : "\/mobile\/js\/services\/services.js",
+      "outputStyle" : 1,
+      "syntaxCheckerStyle" : 0,
+      "outputAbbreviatedPath" : "\/mobile\/js\/services\/services-ck.js",
+      "fileType" : 64
     },
     "\/media\/peasant.png" : {
       "ignoreWasSetByUser" : 0,
@@ -449,16 +526,16 @@
       "initialSize" : 87909,
       "fileType" : 8192
     },
-    "\/mobile\/js\/services\/services.js" : {
-      "ignoreWasSetByUser" : 1,
-      "ignore" : 1,
+    "\/public\/img\/thefinger.png" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/mobile\/js\/services\/services.js",
-      "outputStyle" : 1,
-      "syntaxCheckerStyle" : 0,
-      "outputAbbreviatedPath" : "\/mobile\/js\/services\/services-ck.js",
-      "fileType" : 64
+      "inputAbbreviatedPath" : "\/public\/img\/thefinger.png",
+      "processed" : 0,
+      "outputAbbreviatedPath" : "\/public\/img\/thefinger.png",
+      "initialSize" : 132154,
+      "fileType" : 8192
     },
     "\/public\/js\/main.js" : {
       "ignoreWasSetByUser" : 1,
@@ -548,7 +625,7 @@
     },
     "\/mobile\/styles\/less\/custom-fonts.less" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/mobile\/styles\/less\/custom-fonts.less",
@@ -720,7 +797,7 @@
     },
     "\/public\/styles\/less\/elements.less" : {
       "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
+      "ignore" : 1,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/public\/styles\/less\/elements.less",
@@ -887,8 +964,8 @@
       "debug" : 0,
       "bitwise" : 1,
       "white" : 0,
-      "browser" : 1,
       "worker" : 0,
+      "browser" : 1,
       "laxcomma" : 0,
       "multistr" : 0,
       "shadow" : 0,
@@ -938,8 +1015,8 @@
       "no-dead-code" : 0,
       "inline-script" : 0,
       "ascii" : 0,
-      "unsafe" : 0,
       "mangle-toplevel" : 0,
+      "unsafe" : 0,
       "no-seqs" : 1,
       "beautify" : 0,
       "lift-vars" : 0,
