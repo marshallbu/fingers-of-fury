@@ -30,7 +30,6 @@ app.all('/m/*', mobile.index);
 app.get('/api/tableInfo/:tableId', api.tableInfo);
 app.get('/api/tableInfo/:tableId/players', api.players);
 app.get('/api/tableInfoBySession/:sessionId', api.tableInfoBySession);
-app.get('/api/roundResults', api.roundResults);
 app.get('/api/createTable', api.createTable);
 app.post('/api/joinTable', api.joinTable);
 app.get('/api/leaveTable', api.leaveTable);
