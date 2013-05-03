@@ -205,6 +205,120 @@ module.exports.leaveTable = function(req, res, next) {
 
 
 /**
+ * makes judgement on a round and returns results
+ * @param tableId
+ * @param round
+ *
+ * @requestType POST
+ **/
+module.exports.makeJudgement = function(req, res, next) {
+  console.log('API REQUEST: makeJudgement - ', req.body);
+
+  var tableId = req.body.tableId;
+  var round = req.body.round;
+
+  //Table.findOne({ _id: tableId, 'rounds.round': round, 'rounds.complete': false }, function(err, table) {
+  Table.findOne({ _id: tableId, 'rounds.complete': false }, function(err, table) {
+    if (err) {
+      console.log(err);
+      res.json({ error: 'Error judging round' });
+    } else if (table === null) {
+      console.log('Table does not exist: ' + tableId, round);
+      res.json({ error: 'Table does not exist' });
+    } else {
+      console.log('Found table: ', table);
+
+      // @todo properly get the round number
+      var moves = _.last(table.rounds).moves;
+      var rocks = [];
+      var papers = [];
+      var scissors = [];
+      for (var move in moves) {
+        if (moves[move].move == 'rock') {
+          rocks.push(moves[move].player);
+        } else if (moves[move].move == 'paper') {
+          papers.push(moves[move].player);
+        } else if (moves[move].move == 'scissors') {
+          scissors.push(moves[move].player);
+        }
+      }
+
+      
+      if (rocks.length > 0 && papers.length > 0 && scissors.length > 0) { // tie game
+        console.log('TIE GAME');
+        // update round data
+        var tempRounds = table.rounds;
+        var currRound = _.last(table.rounds);
+        currRound.complete = true;
+        tempRounds[table.rounds.length - 1] = currRound;
+        table.set('rounds', tempRounds);
+        table.save();
+
+        res.json({
+          result: 'draw',
+          winners: [],
+          table: table
+        });
+      } else if (rocks.length > 0 && papers.length == 0) { // rock wins
+        console.log('ROCK WINS');
+        // update round data
+        var tempRounds = table.rounds;
+        var currRound = _.last(table.rounds);
+        currRound.complete = true;
+        currRound.winners = rocks;
+        tempRounds[table.rounds.length - 1] = currRound;
+        table.set('rounds', tempRounds);
+        table.save();
+
+        res.json({
+          result: 'rock wins',
+          winners: currRound.winners,
+          table: table
+        });
+      } else if (papers.length > 0 && scissors.length == 0) { // paper wins
+        console.log('PAPER WINS');
+        // update round data
+        var tempRounds = table.rounds;
+        var currRound = _.last(table.rounds);
+        currRound.complete = true;
+        currRound.winners = papers;
+        tempRounds[table.rounds.length - 1] = currRound;
+        table.set('rounds', tempRounds);
+        table.save();
+
+        res.json({
+          result: 'paper wins',
+          winners: currRound.winners,
+          table: table
+        });
+      } else if (scissors.length > 0 && rocks.length == 0) { // scissor wins
+        console.log('SCISSOR WINS');
+        // update round data
+        var tempRounds = table.rounds;
+        var currRound = _.last(table.rounds);
+        currRound.complete = true;
+        currRound.winners = scissors;
+        tempRounds[table.rounds.length - 1] = currRound;
+        table.set('rounds', tempRounds);
+        table.save();
+
+        res.json({
+          result: 'scissor wins',
+          winners: currRound.winners,
+          table: table
+        });
+      } else {
+        console.log('what do?');
+        res.json({
+          result: 'error, what did u do',
+          table: table
+        });
+      }
+    }
+  });
+};
+
+/**
  * returns player info
  * @param name
  *

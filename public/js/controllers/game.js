@@ -151,6 +151,7 @@ define([
           $log.error(data.error);
         } else {
           $scope.game.table = data.table;
+          _makeJudgement();
 
           // $scope.game.players = Player.query({tableId: $scope.game.table._id});
         }
@@ -164,6 +165,33 @@ define([
         $scope.game.players = Player.query({tableId: $scope.game.table._id});
 
         $scope.game.playerOrderPredicate = 'lastJoined';
+      };
+
+      // make judgement
+      var _makeJudgement = function() {
+        var totalPlayers = $scope.game.table.players.length;
+        var registeredMoves = _.last($scope.game.table.rounds).moves.length;
+
+        var data = {
+          tableId: $scope.game.table._id,
+          round: $scope.game.table.rounds.length
+        };
+
+        if (totalPlayers === registeredMoves) {
+          $http.post('/api/makeJudgement', data)
+            .success(function(resp, status) {
+              $log.log(resp);
+              if (resp.error) {
+                $log.error(resp.error, resp.message);
+              } else {
+                socket.emit('game:round:complete', data);
+              }
+            })
+            .error(function(resp, status) {
+              console.log(resp, status);
+              $log.error('error making judgement: ', $scope.game.player.name + ', session: ', $scope.game.table.session);
+            });
+        }
       };
 
     }

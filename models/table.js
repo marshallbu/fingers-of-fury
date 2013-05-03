@@ -10,14 +10,15 @@ var tableSchema = new Schema({
     id: String,
     name: String
   }],
-  rounds: [{ 
-    winners: [String], 
+  rounds: [{
+    round: Number,
+    winners: [String],
     moves: [{
       player: String,
       move: String
     }],
     played: { type: Date },
-    complete: Boolean
+    complete: { type: Boolean, default: false }
   }]
 });
 

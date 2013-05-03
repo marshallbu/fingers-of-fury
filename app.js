@@ -33,6 +33,7 @@ app.get('/api/tableInfoBySession/:sessionId', api.tableInfoBySession);
 app.get('/api/createTable', api.createTable);
 app.post('/api/joinTable', api.joinTable);
 app.post('/api/leaveTable', api.leaveTable);
+app.post('/api/makeJudgement', api.makeJudgement);
 
 // player api
 app.get('/api/playerInfo', api.playerInfo);
