@@ -6,7 +6,18 @@ var tableSchema = new Schema({
   session: String,
   url: String,
   created: {type: Date, default: Date.now},
-  players: []
+  players: [{
+    id: String,
+    name: String
+  }],
+  rounds: [{ 
+    winners: [String], 
+    moves: [{
+      player: String,
+      move: String
+    }],
+    played: { type: Date }
+  }]
 });
 
 module.exports = mongoose.model('Table', tableSchema);

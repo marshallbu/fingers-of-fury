@@ -40,7 +40,7 @@ define([
         $log.log(player);
 
         // let's join the game
-        $http.post('/api/joinTable', { tableId: $scope.game.table.id, name: player.name, sessionId: $routeParams.sessionId })
+        $http.post('/api/joinTable', { tableId: $scope.game.table._id, name: player.name, sessionId: $routeParams.sessionId })
           .success(function(response, status) {
             $log.log(response);
 
@@ -49,7 +49,7 @@ define([
 
             } else {
               var data = {
-                tableId: $scope.game.table.id,
+                tableId: $scope.game.table._id,
                 name: player.name
               };
               socket.emit('game:player:join', data);
@@ -57,7 +57,7 @@ define([
             }
           })
           .error(function(response, status) {
-            $log.error('error joining table ' + $scope.game.table.id, response);
+            $log.error('error joining table ' + $scope.game.table._id, response);
           });
       };
 
@@ -128,7 +128,7 @@ define([
         $log.log('move pressed:', move);
 
         var moveData = {
-          tableId: $scope.game.table.id, 
+          tableId: $scope.game.table._id, 
           playerName: $scope.game.player.name, 
           playerMove: move
         };
@@ -150,14 +150,14 @@ define([
             }
           })
           .error(function(response, status) {
-            $log.error('error playing move ' + $scope.game.table.id, response);
+            $log.error('error playing move ' + $scope.game.table._id, response);
           });
 
       };
 
       socket.on('game:player:joined', function(data) {
         
-        
+        // $location.path('/control/' + $scope.game.table.session + '/' + $scope.game.player.name);
       });
 
       // private stuff

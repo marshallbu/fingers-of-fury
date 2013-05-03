@@ -152,6 +152,25 @@ module.exports.joinTable = function(req, res, next) {
     }
   });
 
+
+/**
+ * leave table
+ * @param name
+ *
+ * @requestType POST
+ */
+module.exports.leaveTable = function(req, res, next) {
+  console.log('API REQUEST: leaveTable -', req.params);
+
+  var name = req.name;
+
+  res.json({
+    result: 'success'
+  });
+
+  // @todo trigger notification
+};
+
 /*
 
   var self = this;
@@ -220,6 +239,32 @@ module.exports.joinTable = function(req, res, next) {
   // @todo trigger notification
 };
 
+
+/**
+ * returns player info
+ * @param name
+ *
+ * @requestType GET
+ */
+module.exports.playerInfo = function(req, res, next) {
+  console.log('API REQUEST: playerInfo - ', req.params);
+
+  Player.findOne({ name: req.params.playerName }, function(err, existingPlayer) {
+    if (err) {
+      console.log(err);
+      res.json({ error: 'Error getting player info' });
+    } else if (existingPlayer === null) {
+      // player does not exist
+      console.log('Player does not exist: ' + req.params.playerName);
+      res.json({ error: 'Player does not exist' });
+    } else {
+      // found player
+      console.log('Found player: ', existingPlayer);
+      res.json(existingPlayer);
+    }
+  });
+
+};
 
 
 module.exports.playerInfoBySession = function(req, res, next) {
@@ -663,7 +708,7 @@ module.exports.incrementPlayerStats = function(req, res, next) {
  *
  * @requestType GET
  */
-module.exports.playerInfo = function(req, res, next) {
+module.exports.playerInfo2 = function(req, res, next) {
   console.log('API REQUEST: playerInfo');
 
   var name = req.name

@@ -70,7 +70,7 @@ define([
         if (!$scope.game.table) {
           result = false;
         }
-        else if (!($scope.game.table.playerCount) || $scope.game.table.playerCount <= 1) {
+        else if (!($scope.game.table.players) || $scope.game.table.players.length <= 1) {
           result = false;
         }
 
@@ -81,7 +81,7 @@ define([
       // display the current round, instead of the amount of rounds that have been played
       $scope.roundDisplay = function() {
         if ($scope.game.table) {
-          return parseInt($scope.game.table.rounds) + 1;
+          return parseInt($scope.game.table.rounds.length) + 1;
         }
       }
 
@@ -97,7 +97,7 @@ define([
         if (data.error) {
           $log.error(data.error);
         } else {
-          $scope.game.table = data.tableStats;
+          $scope.game.table = data.table;
         }
         
       });

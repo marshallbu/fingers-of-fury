@@ -3,6 +3,9 @@ var util = require('util');
 var redis = require('redis');
 var redisClient = redis.createClient();
 
+var Table = require('../models/table.js');
+var Player = require('../models/player.js');
+
 // export function for listening to the socket
 module.exports = function (socket) {
 
@@ -13,21 +16,20 @@ module.exports = function (socket) {
 
     // get the latest table info and broadcast it out
     // i wonder if we should talk to our own services here?
-    redisClient.hgetall('table:' + data.tableId, function(err, resp) {
-
-      if (resp === null) {
-        table = {
-          error: 'Table does not exist'
+    Table.findOne({ _id: data.tableId }, function(err, table) {
+      if (err) {
+        console.log(err);
+        table = { 
+          error: 'Table does not exist' 
         };
       } else {
-        table = {
-          tableStats: resp
-        } 
+        table = { 
+          table: table 
+        };
       }
-
-      socket.broadcast.emit('game:player:joined', table);
     });
 
+    socket.broadcast.emit('game:player:joined', table);
   });
 
   socket.on('game:player:move', function(data) {

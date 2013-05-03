@@ -3,13 +3,13 @@
   <div class="game-status-container" controller-info>
     <div class="controller-info">
 
-      <div ng-show="!game.table.playerCount || game.table.playerCount == 1" class="controller-waiting">
+      <div ng-show="!game.table.players || game.table.players.length == 1" class="controller-waiting">
         Be patient, warrior...<br/>
         <br/>
         There are none who are brave enough to face you... yet.
       </div>
 
-      <div ng-hide="!game.table.playerCount || game.table.playerCount == 1" class="controller-gamepad">
+      <div ng-hide="!game.table.players || game.table.players.length == 1" class="controller-gamepad">
         <!-- game buttons and controls should go in here -->
         <div class="controller-title">Choose your technique!</div>
         <div class="controller-buttons">

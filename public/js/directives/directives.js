@@ -45,6 +45,8 @@ define(['angular', 'app'], function (angular, app) {
         // console.log('tester');
       });
 
+      $window.resize(alignTableInfo);
+
       initTableInfo();
     };
   });
