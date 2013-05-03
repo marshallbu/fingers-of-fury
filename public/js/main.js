@@ -6,6 +6,7 @@ require.config({
     angularResource: 'lib/angular/angular-resource',
     underscore: 'lib/underscore-min',
     'underscore.string': 'lib/underscore.string.min',
+    mediaelement: 'lib/mediaelement/mediaelement',
     bootstrap: 'lib/bootstrap.min',
     io: '/socket.io/socket.io'
   },
@@ -20,6 +21,9 @@ require.config({
       exports: '_'
     },
     'underscore.string': ['underscore'],
+    mediaelement: {
+      deps: ['angular', 'jquery']
+    },
     bootstrap: {
       debs: [
         'jquery'
@@ -32,6 +36,7 @@ require([
   'jquery',
   'underscore',
   'underscore.string',
+  'mediaelement',
   'bootstrap',
   'io',
   'angular',
@@ -41,7 +46,7 @@ require([
   'directives/directives',
   'controllers/game',
   'routes'
-], function ($, _, _s, bootstrap, io, angular, angularResource, app, services, directives, game) {
+], function ($, _, _s, mediaelement, bootstrap, io, angular, angularResource, app, services, directives, game) {
     angular.element(document).ready(function() {
       angular.bootstrap(document, ['fof']);
     });

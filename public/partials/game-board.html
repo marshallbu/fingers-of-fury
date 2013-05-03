@@ -24,9 +24,40 @@
 
 <script>
   (function() {
+    $window = $(window);
     // console.log();
 
     // console.log('test');
+
+    //stop the intro music
+    if (window.meIntroMusic) {
+      console.log("does this run?");
+      window.meIntroMusic.pause();
+
+
+      var $mediaRounds = $('<audio id="introMusic"></audio>');
+      $mediaRounds.append('<source src="/assets/sounds/bgm-in-turn.ogg" type="audio/ogg" />');
+      $mediaRounds.append('<source src="/assets/sounds/bgm-in-turn.mp3" type="audio/mpeg" />');
+      $mediaRounds.append('Your browser does not support the audio tag.');
+
+      //need to find a better way to do this instead of adding stuff to window
+      window.meTurnMusic = new MediaElement($mediaRounds.get(0), {
+        startVolume: 1,
+        success: function (mediaElement, domObject) {  
+          // add event listener
+          mediaElement.addEventListener('ended', function(e) {
+              mediaElement.play();
+          }, false);
+           
+          mediaElement.play();
+            
+        },
+        // fires when a problem is detected
+        error: function () { 
+         
+        }
+      });
+    }
 
     
   }());

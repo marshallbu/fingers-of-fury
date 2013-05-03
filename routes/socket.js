@@ -68,6 +68,34 @@ module.exports = function (socket) {
 
   });
 
+  socket.on('game:round:complete', function(data) {
+    console.log('socket event [game:round:complete]', data);
+
+    var tableData = {};
+
+    // get the latest table info and broadcast it out
+    // i wonder if we should talk to our own services here?
+    // Table.findOne({ _id: data.moveData.tableId }, function(err, table) {
+    //   if (err) {
+    //     console.log(err);
+    //     tableData = { 
+    //       error: 'Error getting Table' 
+    //     };
+    //   } else if (table === null) {
+    //     console.log('Table does not exist: ' + data.moveData.tableId);
+    //     tableData = { 
+    //       error: 'Table does not exist' 
+    //     };
+    //   } else {
+    //     tableData = { 
+    //       table: table 
+    //     };
+    //   }
+
+    // });
+
+  });
+
   socket.on('disconnect', function (data) {
     console.log('socket event [disconnect]', data);
 
