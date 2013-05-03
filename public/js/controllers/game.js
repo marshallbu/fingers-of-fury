@@ -81,7 +81,7 @@ define([
       // display the current round, instead of the amount of rounds that have been played
       $scope.roundDisplay = function() {
         if ($scope.game.table) {
-          return parseInt($scope.game.table.rounds.length) + 1;
+          return parseInt($scope.game.table.rounds.length);
         }
       }
 
