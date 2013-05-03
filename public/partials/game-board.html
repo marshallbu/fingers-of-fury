@@ -14,7 +14,7 @@
   </div>
 
   <div ng-repeat="player in game.players | orderBy:game.playerOrderPredicate">
-    <div class="player player-{{$index}} player-class1" player-info>
+    <div class="player player-{{$index}} player-class1" player-info ng-class="{'moved': playerMoved(player)}">
       <h3 class="player-name">{{player.name}}</h3>
 
     </div>

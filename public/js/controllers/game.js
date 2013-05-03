@@ -76,7 +76,7 @@ define([
 
         // $log.log('should display table? ', result);
         return result;
-      }
+      };
 
       // display the current round, instead of the amount of rounds that have been played
       $scope.roundDisplay = function() {
@@ -92,7 +92,35 @@ define([
           }
 
         }
-      }
+      };
+
+      // check if player has a move
+      $scope.playerMoved = function(player) {
+        if($scope.game.table) {
+
+          var rounds = $scope.game.table.rounds;
+
+          if (rounds && rounds.length > 0) {
+            var currentRound = rounds[rounds.length - 1];
+
+            if (currentRound.moves.length > 0) {
+              var results = _.find(currentRound.moves, function(move) {
+                return move.player == player.name;
+              });
+
+              if (results) {
+                console.log('player moved', player);
+
+                return true;
+              } else {
+                return false;
+              }
+
+            }
+          }
+
+        }
+      };
 
       $scope.$on('$viewContentLoaded', function () {
         $log.log('content loaded?');
