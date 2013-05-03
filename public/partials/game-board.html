@@ -2,10 +2,11 @@
 
   <div class="game-status-container" table-info>
     <div class="table-info">
+      <div ng-hide="shouldDisplayInfo()" class="table-waiting">Waiting for other warriors...</div>
+
       <div ng-show="shouldDisplayInfo()" class="table-round">Round: {{roundDisplay()}}</div>
       <div ng-show="shouldDisplayInfo()" class="table-action"></div>
-      <div ng-show="!game.table.players || game.table.players.length == 1" class="table-waiting">Waiting for other warriors...</div>
-      <div ng-hide="!game.table.players || game.table.players.length == 1" class="table-choose">Choose your technique!</div>
+      <div ng-show="shouldDisplayInfo()" class="table-choose">Choose your technique!</div>
       <div ng-show="debug" class="table-session">Session: {{game.table.session}}</div>
       <div ng-show="shouldDisplayInfo()" class="table-move"></div>
     </div>
@@ -13,7 +14,7 @@
   </div>
 
   <div ng-repeat="player in game.players | orderBy:game.playerOrderPredicate">
-    <div class="player player-{{$index}} player-class1">
+    <div class="player player-{{$index}} player-class1" player-info>
       <h3 class="player-name">{{player.name}}</h3>
 
     </div>

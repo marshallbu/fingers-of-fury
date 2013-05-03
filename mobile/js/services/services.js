@@ -27,6 +27,13 @@ define(['app'], function (app) {
       }
     };
   });
+
+  angular.module('tableServices', ['ngResource'])
+    .factory('Table', function($resource) {
+      return $resource('/api/tableInfo/:tableId', {}, {
+        query: {method: 'GET', params:{tableId: '@tableId'}}
+      });
+    });
   
   return app;
 

@@ -126,11 +126,21 @@ section.game-board-view div.player.player-0 {
   left: 50%;
   margin-left: -100px;
 }
+section.game-board-view div.player.player-0.moved {
+  -webkit-box-shadow: 0px 0px 7px 4px rgba(0, 143, 42, 0.8);
+  -moz-box-shadow: 0px 0px 7px 4px rgba(0, 143, 42, 0.8);
+  box-shadow: 0px 0px 7px 4px rgba(0, 143, 42, 0.8);
+}
 section.game-board-view div.player.player-1 {
   position: absolute;
   top: 0;
   left: 50%;
   margin-left: -100px;
+}
+section.game-board-view div.player.player-1.moved {
+  -webkit-box-shadow: 0px 0px 7px 4px rgba(255, 121, 41, 0.7);
+  -moz-box-shadow: 0px 0px 7px 4px rgba(255, 121, 41, 0.7);
+  box-shadow: 0px 0px 7px 4px rgba(255, 121, 41, 0.7);
 }
 section.game-board-view div.player.player-2 {
   position: absolute;
@@ -138,11 +148,21 @@ section.game-board-view div.player.player-2 {
   top: 50%;
   margin-top: -100px;
 }
+section.game-board-view div.player.player-2.moved {
+  -webkit-box-shadow: 0px 0px 7px 4px rgba(255, 23, 19, 0.7);
+  -moz-box-shadow: 0px 0px 7px 4px rgba(255, 23, 19, 0.7);
+  box-shadow: 0px 0px 7px 4px rgba(255, 23, 19, 0.7);
+}
 section.game-board-view div.player.player-3 {
   position: absolute;
   left: 0;
   top: 50%;
   margin-top: -100px;
+}
+section.game-board-view div.player.player-3.moved {
+  -webkit-box-shadow: 0px 0px 7px 4px rgba(27, 57, 245, 0.7);
+  -moz-box-shadow: 0px 0px 7px 4px rgba(27, 57, 245, 0.7);
+  box-shadow: 0px 0px 7px 4px rgba(27, 57, 245, 0.7);
 }
 /* Large desktop */
 @media (min-width: 1200px) {

@@ -41,7 +41,7 @@ require([
   'directives/directives',
   'controllers/game',
   'routes'
-], function ($, _, _s, bootstrap, io, angular, angularResource, app, services, game) {
+], function ($, _, _s, bootstrap, io, angular, angularResource, app, services, directives, game) {
     angular.element(document).ready(function() {
       angular.bootstrap(document, ['fof']);
     });

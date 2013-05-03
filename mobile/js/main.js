@@ -5,6 +5,7 @@
 require.config({
   paths: {
     angular: '/js/lib/angular/angular.min',
+    angularResource: '/js/lib/angular/angular-resource',
     underscore: '/js/lib/underscore-min',
     'underscore.string': '/js/lib/underscore.string.min',
     bootstrap: '/js/lib/bootstrap.min',
@@ -13,6 +14,9 @@ require.config({
   shim: {
     angular: {
       exports: 'angular'
+    },
+    angularResource: {
+      deps: ['angular']
     },
     underscore: {
       exports: '_'
@@ -33,11 +37,13 @@ require([
   'bootstrap',
   'io',
   'angular',
+  'angularResource',
   'app',
   'services/services',
+  'directives/directives',
   'controllers/game',
   'routes'
-], function ($, _, _s, bootstrap, io, angular, app, services, game) {
+], function ($, _, _s, bootstrap, io, angular, angularResource, app, services, directives, game) {
     angular.element(document).ready(function() {
       angular.bootstrap(document, ['fof']);
     });

@@ -81,7 +81,16 @@ define([
       // display the current round, instead of the amount of rounds that have been played
       $scope.roundDisplay = function() {
         if ($scope.game.table) {
-          return parseInt($scope.game.table.rounds.length);
+          var roundCount = parseInt($scope.game.table.rounds.length);
+          
+          if (roundCount === 0) {
+            // no rounds have been created yet if 0, so we'll just say round 1
+            // until one has been created
+            return 1; 
+          } else {
+            return roundCount;
+          }
+
         }
       }
 
@@ -89,17 +98,35 @@ define([
         $log.log('content loaded?');
       });
 
+      // on player joined
       socket.on('game:player:joined', function(data) {
-        $scope.game.players = Player.query({tableId: $scope.game.table._id});
 
         // should get our latest table stats from this
-        console.log('after player join:', data);
+        console.log('after player joined:', data);
         if (data.error) {
           $log.error(data.error);
         } else {
           $scope.game.table = data.table;
+
+          $scope.game.players = Player.query({tableId: $scope.game.table._id});
         }
+
         
+      });
+
+      // on player moved
+      socket.on('game:player:moved', function(data) {
+        console.log('after player moved:', data);
+        //
+
+        if (data.error) {
+          $log.error(data.error);
+        } else {
+          $scope.game.table = data.table;
+
+          // $scope.game.players = Player.query({tableId: $scope.game.table._id});
+        }
+
       });
 
       // private stuff

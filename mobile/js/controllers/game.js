@@ -67,8 +67,8 @@ define([
     }
   ]);
 
-  app.controller('GamePadCtrl', ['$scope', 'socket', '$location', '$routeParams', '$http', '$log',
-    function GamePadCtrl($scope, socket, $location, $routeParams, $http, $log) {
+  app.controller('GamePadCtrl', ['$scope', 'socket', '$location', '$routeParams', '$http', '$log', 'Table',
+    function GamePadCtrl($scope, socket, $location, $routeParams, $http, $log, Table) {
       $scope.game = $scope.game || {};
 
       $scope.MOVE_ROCK = 'rock';
@@ -156,8 +156,9 @@ define([
       };
 
       socket.on('game:player:joined', function(data) {
-        
-        // $location.path('/control/' + $scope.game.table.session + '/' + $scope.game.player.name);
+        $scope.game.table = Table.query({tableId: $scope.game.table._id});
+
+
       });
 
       // private stuff

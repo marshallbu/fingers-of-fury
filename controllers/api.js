@@ -261,7 +261,7 @@ module.exports.playMove = function(req, res, next) {
   console.log('API REQUEST: playMove - ', req.body);
 
   var tableId = req.body.tableId;
-  var playerName = req.body.playerName;
+  var playerName = req.body.playerName; //should probably change this to player id
   var playerMove = req.body.playerMove;
 
 
@@ -300,16 +300,31 @@ module.exports.playMove = function(req, res, next) {
 
         //make sure this round isn't already won
         if (!currentRound.complete) {
-          //just push the move on to the round array
-          var move = { player: playerName, move: playerMove };
-
-          currentRound.moves.push(move);
-
-          table.save();
-
-          res.json({
-            success: 'Move played successfully'
+          // check to see if player has already moved this round
+          var results = _.find(currentRound.moves, function(move) {
+            return move.player == playerName;
           });
+
+          if (!results) {
+
+            //just push the move on to the round array 
+            var move = { player: playerName, move: playerMove };
+
+            currentRound.moves.push(move);
+
+            table.save();
+
+            res.json({
+              success: 'Move played successfully'
+            });
+
+          } else {
+            // player already moved this round
+            res.json({
+              error: 'Move already played in current round'
+            });
+
+          }
 
         } else {
           //create a new round to add the move to
@@ -333,59 +348,6 @@ module.exports.playMove = function(req, res, next) {
 
     }
   });
-
-  // var multi = redisClient.multi();
-
-  // multi.hgetall('table:' + tableId);
-  // multi.smembers('table:' + tableId + ':players');
-  // multi.exists(tableMovesQueue);
-
-  // multi.exec(function(err, replies) {
-  //   console.log('first multi:', replies);
-  //   // trust that the table we are looking for is there
-  //   var tableStats = replies[0];
-  //   var playerKeys = replies[1];
-  //   var movesExist = replies[2];
-
-  //   var moveMax = playerKeys.length;
-
-  //   var multi = redisClient.multi();
-
-  //   // if there are no moves already current, create a new hash that is current
-  //   // if (movesExist === 0) {
-  //   //   multi.hset(tableMovesQueue, 'playerName:' + playerMove);
-  //   // }
-    
-  //   multi.hsetnx(tableMovesQueue, playerName, playerMove);
-  //   multi.hlen(tableMovesQueue);
-
-  //   multi.exec(function(err, replies) {
-  //     var success = replies[0];
-  //     var length = replies[1];
-
-  //     if (success === 1) {
-  //       // need to do something here if this is the "last" move
-  //       if (length === moveMax) {
-  //         // need to update table stats and change round key from current to the round number
-  //         // then, trigger some game brain
-  //       }
-
-  //       res.json({
-  //         success: 'Move played successfully'
-  //       });
-
-  //       // need to do something here if this is the "last" move
-  //     } else {
-  //       res.json({
-  //         error: 'Move already played in current round'
-  //       });
-  //     }
-
-
-
-  //   });
-
-  // });
 
   // @todo trigger notification
 };

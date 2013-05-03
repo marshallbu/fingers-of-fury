@@ -138,6 +138,10 @@ section.game-board-view {
       bottom: 0;
       left: 50%;
       margin-left: -100px;
+
+      &.moved {
+        .box-shadow(0px 0px 7px 4px rgba(0, 143, 42, .8));
+      }
     }
 
     &.player-1 {
@@ -145,6 +149,10 @@ section.game-board-view {
       top: 0;
       left: 50%;
       margin-left: -100px;
+      
+      &.moved {
+        .box-shadow(0px 0px 7px 4px rgba(255, 121, 41, .7));
+      }
     }
 
     &.player-2 {
@@ -152,6 +160,10 @@ section.game-board-view {
       right: 0;
       top: 50%;
       margin-top: -100px;
+
+      &.moved {
+        .box-shadow(0px 0px 7px 4px rgba(255, 23, 19, .7));
+      }
     }
 
     &.player-3 {
@@ -159,6 +171,10 @@ section.game-board-view {
       left: 0;
       top: 50%;
       margin-top: -100px;
+
+      &.moved {
+        .box-shadow(0px 0px 7px 4px rgba(27, 57, 245, .7));
+      }
     }
   }
 }

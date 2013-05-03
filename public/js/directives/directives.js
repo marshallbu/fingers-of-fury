@@ -4,8 +4,10 @@
 
 define(['angular', 'app'], function (angular, app) {
 
-  app.directive('playerDirective', function() {
+  app.directive('playerInfo', function() {
     return function(scope, element, attrs) {
+
+      
 
     };
   });
