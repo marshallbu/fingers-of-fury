@@ -158,6 +158,22 @@ define([
 
       });
 
+      // on round completed
+      socket.on('game:round:completed', function(data) {
+
+        // should get our latest table stats from this
+        console.log('after round completed:', data);
+        if (data.error) {
+          $log.error(data.error);
+        } else {
+          $scope.game.table = data.table;
+
+          // $scope.game.players = Player.query({tableId: $scope.game.table._id});
+        }
+
+        
+      });
+
       // private stuff
       var _initBoard = function() {
         // the game object scope should already be setup
@@ -184,7 +200,7 @@ define([
               if (resp.error) {
                 $log.error(resp.error, resp.message);
               } else {
-                socket.emit('game:round:complete', data);
+                socket.emit('game:round:complete', resp);
               }
             })
             .error(function(resp, status) {
