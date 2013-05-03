@@ -32,7 +32,7 @@ app.get('/api/tableInfo/:tableId/players', api.players);
 app.get('/api/tableInfoBySession/:sessionId', api.tableInfoBySession);
 app.get('/api/createTable', api.createTable);
 app.post('/api/joinTable', api.joinTable);
-app.get('/api/leaveTable', api.leaveTable);
+app.post('/api/leaveTable', api.leaveTable);
 
 // player api
 app.get('/api/playerInfo', api.playerInfo);

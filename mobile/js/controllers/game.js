@@ -62,7 +62,6 @@ define([
       };
 
       $scope.playerLeave = function() {
-
       };
     }
   ]);
@@ -121,7 +120,29 @@ define([
       }
 
       $scope.playerLeave = function() {
-        
+        $log.log('player left game: ', $scope.game.player.name + ', session: ', $scope.game.table.session);
+
+        var data = {
+          name: $scope.game.player.name,
+          sessionId: $scope.game.table.session
+        };
+
+        $http.post('/api/leaveTable', data)
+          .success(function(resp, status) {
+            $log.log(resp);
+
+            if (resp.error) {
+              $log.error(resp.error, resp.message);
+            } else {
+            var pdata = {
+              data: data
+            };
+            socket.emit('game:player:leave', pdata);
+          }
+        })
+        .error(function(resp, status) {
+          $log.error('error leaving table: ', $scope.game.player.name + ', session: ', $scope.game.table.session);
+        });
       };
 
       $scope.playerMove = function(move) {
