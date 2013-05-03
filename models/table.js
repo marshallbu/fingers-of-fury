@@ -16,7 +16,8 @@ var tableSchema = new Schema({
       player: String,
       move: String
     }],
-    played: { type: Date }
+    played: { type: Date },
+    complete: Boolean
   }]
 });
 
