@@ -99,11 +99,12 @@ module.exports = function (socket) {
         table.save();
 
         tableData = { 
-          table: table 
+          table: table
         };
       }
 
-      socket.broadcast.emit('game:round:completed', tableData);
+      //socket.broadcast.emit('game:round:completed', tableData);
+      socket.emit('game:round:completed', tableData);
     });
 
     
