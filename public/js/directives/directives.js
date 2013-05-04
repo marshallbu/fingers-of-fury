@@ -17,16 +17,17 @@ define(['angular', 'app'], function (angular, app) {
       var $window = $(window); 
       // scope.$window = scope.$window || $(window); //wonder if i can cache this in the scope somewhere
 
+      var $gameBoardView = $('section.game-board-view');
       var $tableStatusDiv = $('div.game-status-container');
 
       var alignTableInfo = function() {
-        var winHeight = $window.height();
+        var viewHeight = $gameBoardView.height();
         var infoHeight = $tableStatusDiv.height();
 
-        if (winHeight > 0 && (winHeight - infoHeight) > 0) {
+        if (viewHeight > 0 && (viewHeight - infoHeight) > 0) {
           $tableStatusDiv.css('position', 'relative');
           $tableStatusDiv.css('top', function() {
-            return ((winHeight / 2) - (infoHeight / 2)) + 'px';
+            return ((viewHeight / 2) - (infoHeight / 2)) + 'px';
           });
         }
       };
@@ -40,6 +41,7 @@ define(['angular', 'app'], function (angular, app) {
 
       scope.$watch('game.table', function(){
         if (scope.game.table) {
+
           // $tableStatusDiv.find('div.table-info div.table-session').text(scope.game.table.session);
         }
 

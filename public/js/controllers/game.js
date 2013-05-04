@@ -7,11 +7,12 @@
  */
 
 define([
+  'underscore.string',
   'app'
-], function (app) {
+], function (_s, app) {
 
-  app.controller('GameMenuCtrl', ['$scope', 'socket', '$location', '$routeParams', '$http', '$log', 'Player',
-    function GameMenuCtrl($scope, socket, $location, $routeParams, $http, $log, Player) {
+  app.controller('GameMenuCtrl', ['$scope', 'socket', 'music', '$location', '$routeParams', '$http', '$log', 'Player',
+    function GameMenuCtrl($scope, socket, music, $location, $routeParams, $http, $log, Player) {
       $scope.game = $scope.game || {};
       $scope.game.table = $scope.game.table || {};
 
@@ -28,12 +29,22 @@ define([
       socket.on('game:player:joined', function(data) {
         $location.path('/board/' + $scope.game.table.session);
       });
+
+      // music handling for now
+      music.pauseCurrent(); // pause anything currently playing just in case
+      music.play('intro');
     }
   ]);
 
-  app.controller('GameBoardCtrl', ['$scope', 'socket', '$location', '$routeParams', '$http', '$log', 'Player',
-    function GameBoardCtrl($scope, socket, $location, $routeParams, $http, $log, Player) {
+  app.controller('GameBoardCtrl', ['$scope', 'socket', 'music', '$location', '$routeParams', '$http', '$log', 'Player',
+    function GameBoardCtrl($scope, socket, music, $location, $routeParams, $http, $log, Player) {
       $scope.game = $scope.game || {};
+      $scope.game.round = $scope.game.round || {};
+      $scope.game.judgement = $scope.game.judgement || {};
+
+      $scope.game.round.active = true;
+      $scope.game.judgement.active = false;
+
       var self = this;
       // $scope.debug = true;
 
@@ -64,7 +75,7 @@ define([
       }
      
       // checker for when to show stuff on the view
-      $scope.shouldDisplayInfo = function() {
+      $scope.displayRoundInfo = function() {
         var result = true;
 
         if (!$scope.game.table) {
@@ -75,6 +86,16 @@ define([
         }
 
         // $log.log('should display table? ', result);
+        return result;
+      };
+
+      $scope.displayJudgementInfo = function() {
+        var result = true;
+
+        // if ($scope.game.judgement) {
+        //   result = false;
+        // }
+
         return result;
       };
 
@@ -166,8 +187,10 @@ define([
         if (data.error) {
           $log.error(data.error);
         } else {
-          $scope.game.table = data.table;
+          var rounds = data.table.rounds;
+          var lastCompletedRound = rounds[rounds.length-2];
 
+          $scope.game.judgement.message = "WINNERS:<br/>" + _s.join(" ", lastCompletedRound.winners);
           // $scope.game.players = Player.query({tableId: $scope.game.table._id});
         }
 
@@ -187,6 +210,10 @@ define([
       var _makeJudgement = function() {
         var totalPlayers = $scope.game.table.players.length;
         var registeredMoves = _.last($scope.game.table.rounds).moves.length;
+        $scope.game.round.active = false;
+        $scope.game.judgement.active = true;
+
+        $scope.game.judgement.message = "JUDGEMENT!!";
 
         var data = {
           tableId: $scope.game.table._id,
@@ -201,6 +228,7 @@ define([
                 $log.error(resp.error, resp.message);
               } else {
                 socket.emit('game:round:complete', resp);
+
               }
             })
             .error(function(resp, status) {
@@ -210,6 +238,9 @@ define([
         }
       };
 
+      // music handling for now
+      music.pauseCurrent(); // pause anything currently playing just in case
+      music.play('round')
     }
   ]);
 

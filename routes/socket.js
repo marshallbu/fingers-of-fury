@@ -101,10 +101,12 @@ module.exports = function (socket) {
         tableData = { 
           table: table
         };
+
+        console.log('completed table data: ', tableData);
+        socket.emit('game:round:completed', tableData);
+        socket.broadcast.emit('game:round:completed', tableData);
       }
 
-      //socket.broadcast.emit('game:round:completed', tableData);
-      socket.emit('game:round:completed', tableData);
     });
 
     
