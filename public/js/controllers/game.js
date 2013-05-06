@@ -11,8 +11,8 @@ define([
   'app'
 ], function (_s, app) {
 
-  app.controller('GameMenuCtrl', ['$scope', 'socket', 'music', '$location', '$routeParams', '$http', '$log', 'Player',
-    function GameMenuCtrl($scope, socket, music, $location, $routeParams, $http, $log, Player) {
+  app.controller('GameMenuCtrl', ['$scope', 'socket', 'music', 'effects', '$location', '$routeParams', '$http', '$log', 'Player',
+    function GameMenuCtrl($scope, socket, music, effects, $location, $routeParams, $http, $log, Player) {
       $scope.game = $scope.game || {};
       $scope.game.table = $scope.game.table || {};
 
@@ -32,7 +32,9 @@ define([
 
       // music handling for now
       music.pauseCurrent(); // pause anything currently playing just in case
+      effects.play('voice-title');
       music.play('intro');
+      
     }
   ]);
 

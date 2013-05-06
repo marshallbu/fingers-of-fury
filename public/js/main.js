@@ -43,10 +43,11 @@ require([
   'angularResource',
   'app',
   'services/services',
+  'services/soundengine',
   'directives/directives',
   'controllers/game',
   'routes'
-], function ($, _, _s, mediaelement, bootstrap, io, angular, angularResource, app, services, directives, game) {
+], function ($, _, _s, mediaelement, bootstrap, io, angular, angularResource, app, services, soundengine, directives, game) {
     angular.element(document).ready(function() {
       angular.bootstrap(document, ['fof']);
     });
