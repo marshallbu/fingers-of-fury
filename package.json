@@ -1,32 +1,26 @@
 {
   "name": "fingers-of-fury",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "The mighty fingers of fury!",
   "contributors": [
     {
       "name": "Marshall Upshur",
       "email": "marshall_upshur@sv.comcast.com"
-    },
-    {
-      "name": "Simon Chung",
-      "email": "simon_chung@sv.comcast.com"
-    },
-    {
-      "name": "Hong Taek Kwon",
-      "email": "hong_kwon@sv.comcast.com"
-    },
-    {
-      "name": "Thaya K. Kareeson",
-      "email": "thaya_kareeson@sv.comcast.com"
     }
   ],
+  "main": "./app.js",
   "readmeFilename": "README.md",
   "dependencies": {
-    "express": "~3.1.0",
-    "socket.io": "~0.9.13",
-    "underscore": "~1.4.4",
+    "express": "~3.2.6",
+    "socket.io": "~0.9.16",
+    "lodash": "~1.2.1",
     "underscore.string": "~2.3.1",
-    "redis": "~0.8.2",
-    "mongoose": "~3.6.8"
+    "async": "*",
+    "mongoose": "~3.6.8",
+    "dustjs-linkedin": "~2.0.0",
+    "dustjs-helpers": "~1.1.1"
+  },
+  "devDependencies": {
+   "intern": "1.1.0"
   }
 }

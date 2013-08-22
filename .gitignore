@@ -1,6 +1,6 @@
 test/config.json
 node_modules
-
+app/vendor/*
+app/images/qr_cache/*
 mobile/styles/.DS_Store
-
 codekit-config.json

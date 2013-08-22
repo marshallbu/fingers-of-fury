@@ -5,6 +5,7 @@ var mongoose = require('mongoose'),
 var tableSchema = new Schema({
   session: String,
   url: String,
+  qr_url: String,
   created: {type: Date, default: Date.now},
   players: [{
     id: String,

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Fingers of Fury!</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <!-- standard viewport tag to set the viewport to the device's width
+    , Android 2.3 devices need this so 100% width works properly and
+    doesn't allow children to blow up the viewport width-->
+  <meta name="viewport" id="vp" content="initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width" />
+  <meta names="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <!-- width=device-width causes the iPhone 5 to letterbox the app, so
+    we want to exclude it for iPhone 5 to allow full screen apps -->
+  <meta name="viewport" id="vp" content="initial-scale=1.0,user-scalable=no,maximum-scale=1" media="(device-height: 568px)" />
+  <meta name="description" content="">
+  <meta name="author" content="">
+  
+
+  <link href="vendor/bootstrap.css/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+  <style type="text/css">
+
+  </style>
+  <link href="vendor/bootstrap.css/css/bootstrap-responsive.min.css" rel="stylesheet">
+  <!--[if lt IE 9]>
+    <script src="vendor/html5shiv/dist/html5shiv.js"></script>
+  <![endif]-->
+
+  
+
+  <link href="styles/css/main.css" rel="stylesheet">
+</head>
+
+<body ng-controller="RootCtrl">
+
+  <div class="main-view" ng-class='{mobile: isMobile}' resize-view ng-view></div> <!-- .main-view -->
+  
+  <script data-main="scripts/main" src="vendor/requirejs/require.js"></script>
+</body>
+</html>

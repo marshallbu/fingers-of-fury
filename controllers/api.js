@@ -1,11 +1,10 @@
-var _ = require('underscore')
-  , util = require('util')
-  , redis = require('redis')
-  , redisClient = redis.createClient()
-  , mongoose = require('mongoose');
-
+var _ = require('lodash');
+var path = require('path');
+var util = require('util');
+var mongoose = require('mongoose');
 var generator = require('../lib/generator');
-var _ = require('underscore');
+var QREncoder = require('qr').Encoder;
+var qrencoder = new QREncoder;
 
 _.str = require('underscore.string');
 _.mixin(_.str.exports());
@@ -26,7 +25,8 @@ db.on('error', console.error.bind(console, 'connection error:'));
 // schemas
 var Table = require('../models/table.js');
 var Player = require('../models/player.js');
-
+var qrUrlPath = 'images/qr_cache';
+var rootQRPath = path.join(__dirname, '../app/', qrUrlPath);
 
 
 // ------------------------
@@ -37,10 +37,19 @@ module.exports.createTable = function(req, res, next) {
   console.log('API REQUEST: createTable');
 
   var gameSession = generator.generateId(5, 'aA#');
+  var gameUrl = 'http://' + req.headers.host + '/#/' + gameSession;
+  var qrImage = gameSession + '.png';
+  var gameQRPath = rootQRPath + '/' + qrImage;
+
+  qrencoder.on('end', function(){
+      console.log('file saved');
+  });
+  qrencoder.encode(gameUrl, gameQRPath, {version: 3, level: 'M', margin: 2});
 
   var table = new Table({
     session: gameSession,
-    url: 'http://' + req.headers.host + '/m/#/' + gameSession
+    url: gameUrl,
+    qr_url: qrUrlPath + '/' + qrImage
   });
   table.save();
 
@@ -70,7 +79,7 @@ module.exports.tableInfoBySession = function(req, res, next) {
   console.log('API REQUEST: tableInfoBySession - ', req.params);
 
   Table.findOne({ session: req.params.sessionId }, function(err, table) {
-    if (err) {
+    if (err || table === null) {
       console.log(err);
       res.json({ error: 'Table session does not exist' });
     } else {

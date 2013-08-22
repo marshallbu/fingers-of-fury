@@ -2,29 +2,21 @@ var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
 var controllers = require('./controllers')({verbose: true});
-var _ = require('underscore');
+var _ = require('lodash');
 var util = require('util');
 var path = require('path');
 var io = require('socket.io').listen(server);
 var generator = require('./lib/generator');
-var socket = require('./routes/socket.js');
+var socket = require('./lib/socket');
 
 _.str = require('underscore.string');
 _.mixin(_.str.exports());
 
 // load controllers
 var api = controllers.api;
-var mobile = controllers.mobile;
 
-// app.use('/', express.static(path.join(__dirname, 'public'), {maxAge: 1000*60}));
-// app.use('/m', express.static(path.join(__dirname, 'mobile'), {maxAge: 1000*60}));
-app.use('/', express.static(path.join(__dirname, 'public'), {}));
+app.use('/', express.static(path.join(__dirname, 'app'), {}));
 app.use(express.bodyParser());
-
-// game controller
-app.all(/^\/m$/, function(req, res, next) { res.redirect('/m/'); });
-app.use('/m/', express.static(path.join(__dirname, 'mobile'), {}));
-app.all('/m/*', mobile.index);
 
 // table api
 app.get('/api/tableInfo/:tableId', api.tableInfo);

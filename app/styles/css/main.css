@@ -1,0 +1,560 @@
+@import "../../vendor/animate.css/animate.css";
+/*---------------------------------------------------
+    LESS Elements 0.9
+  ---------------------------------------------------
+    A set of useful LESS mixins
+    More info at: http://lesselements.com
+  ---------------------------------------------------*/
+@font-face {
+  font-family: 'Papyrus-Regular';
+  src: url('../font/papyrusregular.eot');
+  src: url('../font/papyrusregular.eot?#iefix') format('embedded-opentype'), url('../font/papyrusregular.woff') format('woff'), url('../font/papyrusregular.ttf') format('truetype'), url('../font/papyrusregular.svg#papyrusregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'wonton';
+  src: url('../font/wonton-webfont.eot');
+  src: url('../font/wonton-webfont.eot?#iefix') format('embedded-opentype'), url('../font/wonton-webfont.woff') format('woff'), url('../font/wonton-webfont.ttf') format('truetype'), url('../font/wonton-webfont.svg#wonton') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'GinkoRegular';
+  src: url('../font/ginko.eot');
+  src: url('../font/ginko.eot?#iefix') format('embedded-opentype'), url('../font/ginko.woff') format('woff'), url('../font/ginko.ttf') format('truetype'), url('../font/ginko.svg#GinkoRegular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/****** Vibrate ******/
+@keyframes vibrate {
+  0% {
+    transform: translateX(2px) translateY(2px);
+  }
+  10% {
+    transform: translateX(-2px) translateY(-2px);
+  }
+  20% {
+    transform: translateX(5px) translateY(7px);
+  }
+  30% {
+    transform: translateX(-6px) translateY(-4px);
+  }
+  40% {
+    transform: translateX(1px) translateY(-2px);
+  }
+  50% {
+    transform: translateX(-9px) translateY(3px);
+  }
+  60% {
+    transform: translateX(8px) translateY(-7px);
+  }
+  70% {
+    transform: translateX(-4px) translateY(8px);
+  }
+  80% {
+    transform: translateX(7px) translateY(-2px);
+  }
+  90% {
+    transform: translateX(-3px) translateY(7px);
+  }
+  100% {
+    transform: translateX(0px) translateY(0px);
+  }
+}
+@-ms-keyframes vibrate {
+  0% {
+    -ms-transform: translateX(2px) translateY(2px);
+  }
+  10% {
+    -ms-transform: translateX(-2px) translateY(-2px);
+  }
+  20% {
+    -ms-transform: translateX(5px) translateY(7px);
+  }
+  30% {
+    -ms-transform: translateX(-6px) translateY(-4px);
+  }
+  40% {
+    -ms-transform: translateX(1px) translateY(-2px);
+  }
+  50% {
+    -ms-transform: translateX(-9px) translateY(3px);
+  }
+  60% {
+    -ms-transform: translateX(8px) translateY(-7px);
+  }
+  70% {
+    -ms-transform: translateX(-4px) translateY(8px);
+  }
+  80% {
+    -ms-transform: translateX(7px) translateY(-2px);
+  }
+  90% {
+    -ms-transform: translateX(-3px) translateY(7px);
+  }
+  100% {
+    -ms-transform: translateX(0px) translateY(0px);
+  }
+}
+@-moz-keyframes vibrate {
+  0% {
+    -moz-transform: translateX(2px) translateY(2px);
+  }
+  10% {
+    -moz-transform: translateX(-2px) translateY(-2px);
+  }
+  20% {
+    -moz-transform: translateX(5px) translateY(7px);
+  }
+  30% {
+    -moz-transform: translateX(-6px) translateY(-4px);
+  }
+  40% {
+    -moz-transform: translateX(1px) translateY(-2px);
+  }
+  50% {
+    -moz-transform: translateX(-9px) translateY(3px);
+  }
+  60% {
+    -moz-transform: translateX(8px) translateY(-7px);
+  }
+  70% {
+    -moz-transform: translateX(-4px) translateY(8px);
+  }
+  80% {
+    -moz-transform: translateX(7px) translateY(-2px);
+  }
+  90% {
+    -moz-transform: translateX(-3px) translateY(7px);
+  }
+  100% {
+    -moz-transform: translateX(0px) translateY(0px);
+  }
+}
+@-webkit-keyframes vibrate {
+  0% {
+    -webkit-transform: translateX(2px) translateY(2px);
+  }
+  10% {
+    -webkit-transform: translateX(-2px) translateY(-2px);
+  }
+  20% {
+    -webkit-transform: translateX(5px) translateY(7px);
+  }
+  30% {
+    -webkit-transform: translateX(-6px) translateY(-4px);
+  }
+  40% {
+    -webkit-transform: translateX(1px) translateY(-2px);
+  }
+  50% {
+    -webkit-transform: translateX(-9px) translateY(3px);
+  }
+  60% {
+    -webkit-transform: translateX(8px) translateY(-7px);
+  }
+  70% {
+    -webkit-transform: translateX(-4px) translateY(8px);
+  }
+  80% {
+    -webkit-transform: translateX(7px) translateY(-2px);
+  }
+  90% {
+    -webkit-transform: translateX(-3px) translateY(7px);
+  }
+  100% {
+    -webkit-transform: translateX(0px) translateY(0px);
+  }
+}
+.vibrate {
+  -webkit-animation-name: vibrate;
+  -webkit-animation-duration: .3s;
+  -webkit-transform-origin: center center;
+  -moz-animation-name: vibrate;
+  -moz-animation-duration: .3s;
+  -moz-transform-origin: center center;
+  -ms-animation-name: vibrate;
+  -ms-animation-duration: .3s;
+  -ms-transform-origin: center center;
+  animation-name: vibrate;
+  animation-duration: .3s;
+  transform-origin: center center;
+}
+/****** Rebound ******/
+@keyframes rebound {
+  0% {
+    transform: translateY(-120px);
+    animation-timing-function: cubic-bezier(0.45, 0.05, 0.675, 0.19);
+  }
+  45% {
+    transform: scaleX(0.9) scaleY(1.3);
+  }
+  50% {
+    transform: scaleX(1.25) scaleY(0.8) translateY(0);
+  }
+  100% {
+    transform: translateY(-120px);
+    animation-timing-function: cubic-bezier(0.22, 0.61, 0.345, 1);
+  }
+}
+@-ms-keyframes rebound {
+  0% {
+    -ms-transform: translateY(-120px);
+    -ms-animation-timing-function: cubic-bezier(0.45, 0.05, 0.675, 0.19);
+  }
+  45% {
+    -ms-transform: scaleX(0.9) scaleY(1.3);
+  }
+  50% {
+    -ms-transform: scaleX(1.25) scaleY(0.8) translateY(0);
+  }
+  100% {
+    -ms-transform: translateY(-120px);
+    -ms-animation-timing-function: cubic-bezier(0.22, 0.61, 0.345, 1);
+  }
+}
+@-moz-keyframes rebound {
+  0% {
+    -moz-transform: translateY(-120px);
+    -moz-animation-timing-function: cubic-bezier(0.45, 0.05, 0.675, 0.19);
+  }
+  45% {
+    -moz-transform: scaleX(0.9) scaleY(1.3);
+  }
+  50% {
+    -moz-transform: scaleX(1.25) scaleY(0.8) translateY(0);
+  }
+  100% {
+    -moz-transform: translateY(-120px);
+    -moz-animation-timing-function: cubic-bezier(0.22, 0.61, 0.345, 1);
+  }
+}
+@-webkit-keyframes rebound {
+  0% {
+    -webkit-transform: translateY(-120px);
+    -webkit-animation-timing-function: cubic-bezier(0.45, 0.05, 0.675, 0.19);
+  }
+  45% {
+    -webkit-transform: scaleX(0.9) scaleY(1.3);
+  }
+  50% {
+    -webkit-transform: scaleX(1.25) scaleY(0.8) translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(-120px);
+    -webkit-animation-timing-function: cubic-bezier(0.22, 0.61, 0.345, 1);
+  }
+}
+.rebound {
+  -webkit-animation-name: rebound;
+  -webkit-animation-duration: .6;
+  -webkit-animation-iteration-count: 4;
+  -webkit-transform-origin: center center;
+  -moz-animation-name: rebound;
+  -moz-animation-duration: .6;
+  -moz-animation-iteration-count: 4;
+  -moz-transform-origin: center center;
+  animation-name: rebound;
+  animation-duration: .6;
+  animation-iteration-count: 4;
+  transform-origin: center center;
+}
+html {
+  height: 100%;
+}
+body {
+  color: #222;
+  background: #222222;
+  margin: 0;
+  padding: 0;
+}
+body div.main-view {
+  padding: 0;
+  margin: 0;
+  position: relative;
+}
+div#page.container-fluid {
+  padding: 0;
+  margin: 10px;
+  position: relative;
+  height: 100%;
+  /* desktop container
+   */
+
+  /* mobile container
+   */
+
+}
+div.main-view.mobile div#page.container-fluid {
+  margin: 0;
+}
+div#page.container-fluid div#game-board-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 1px solid #111;
+}
+div#page.container-fluid div#game-board-container div#game-board {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px;
+  background: url('../../images/board.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  overflow: hidden;
+}
+div#page.container-fluid div#game-controller-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: #f2f2f2;
+}
+div#page.container-fluid div#game-controller-container div#game-controller {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px;
+}
+/**
+ * Desktop Board Styles 
+ */
+section.game-intro-view {
+  background-image: url('../../images/blood_strike.png');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center -75px;
+}
+section.game-intro-view h1.main-title {
+  margin: 0;
+  color: #FFC627;
+  font-family: 'GinkoRegular';
+  font-size: 5.286em;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 0em 0em 0.071em rgba(0, 0, 0, 0.5);
+  filter: dropshadow(color=rgba(0, 0, 0, 0.5), offx=0em, offy=0em);
+}
+section.game-intro-view div.control-gestures {
+  text-align: center;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+section.game-intro-view div.control-gestures img {
+  height: 12.500em;
+  width: 12.500em;
+  margin: 0 30px;
+}
+section.game-intro-view div.control-gestures img:nth-child(1) {
+  -webkit-animation-duration: 0.5s;
+  -webkit-animation-delay: 0s;
+  -moz-animation-duration: 0.5s;
+  -moz-animation-delay: 0s;
+  -ms-animation-duration: 0.5s;
+  -ms-animation-delay: 0s;
+  animation-duration: 0.5s;
+  animation-delay: 0s;
+}
+section.game-intro-view div.control-gestures img:nth-child(2) {
+  -webkit-animation-duration: 0.5s;
+  -webkit-animation-delay: 0.2s;
+  -moz-animation-duration: 0.2s;
+  -moz-animation-delay: 0.5s;
+  -ms-animation-duration: 0.2s;
+  -ms-animation-delay: 0.5s;
+  animation-duration: 0.2s;
+  animation-delay: 0.5s;
+}
+section.game-intro-view div.control-gestures img:nth-child(3) {
+  -webkit-animation-duration: 0.5s;
+  -webkit-animation-delay: 0.4s;
+  -moz-animation-duration: 0.5s;
+  -moz-animation-delay: 0.4s;
+  -ms-animation-duration: 0.5s;
+  -ms-animation-delay: 0.4s;
+  animation-duration: 0.5s;
+  animation-delay: 0.4s;
+}
+section.game-intro-view div.control-info {
+  width: 600px;
+  padding: 30px 0;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 1em;
+  font-size: 1.143em;
+  font-weight: bold;
+}
+section.game-intro-view div.control-info img {
+  margin-bottom: 10px;
+}
+section.game-intro-view div.control-info span.link {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #9e0b0f;
+  text-shadow: 0em 0em 0em rgba(0, 0, 0, 0);
+  filter: dropshadow(color=rgba(0, 0, 0, 0), offx=0em, offy=0em);
+}
+section.game-board-view {
+  height: 100%;
+  width: 100%;
+  display: table;
+  position: relative;
+}
+section.game-board-view div.game-status-container {
+  font-size: 3.143em;
+  line-height: 1.429em;
+  margin: 0 auto;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle;
+}
+section.game-board-view div.game-status-container div.table-waiting {
+  font-family: 'wonton';
+  color: #9e0b0f;
+}
+section.game-board-view div.game-status-container div.table-round-info {
+  font-family: 'wonton';
+}
+section.game-board-view div#players-container div.player {
+  height: 200px;
+  width: 200px;
+  border: 1px solid #111;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  -webkit-box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.4);
+  -webkit-border-radius: 30px;
+  -moz-border-radius: 30px;
+  border-radius: 30px;
+  overflow: hidden;
+  -webkit-animation-duration: 0.5s;
+  -webkit-animation-delay: 0s;
+  -moz-animation-duration: 0.5s;
+  -moz-animation-delay: 0s;
+  -ms-animation-duration: 0.5s;
+  -ms-animation-delay: 0s;
+  animation-duration: 0.5s;
+  animation-delay: 0s;
+}
+section.game-board-view div#players-container div.player.player-class1 {
+  background-image: url('../../images/avatar/av-class1.png');
+  background-size: cover;
+}
+section.game-board-view div#players-container div.player h3.player-name {
+  margin: 0;
+  padding: 10px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+section.game-board-view div#players-container div.player:nth-child(1) {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  margin-left: -100px;
+}
+section.game-board-view div#players-container div.player:nth-child(1).moved {
+  -webkit-box-shadow: 0px 0px 7px 4px rgba(0, 143, 42, 0.8);
+  -moz-box-shadow: 0px 0px 7px 4px rgba(0, 143, 42, 0.8);
+  box-shadow: 0px 0px 7px 4px rgba(0, 143, 42, 0.8);
+}
+section.game-board-view div#players-container div.player:nth-child(2) {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -100px;
+}
+section.game-board-view div#players-container div.player:nth-child(2).moved {
+  -webkit-box-shadow: 0px 0px 7px 4px rgba(255, 23, 19, 0.7);
+  -moz-box-shadow: 0px 0px 7px 4px rgba(255, 23, 19, 0.7);
+  box-shadow: 0px 0px 7px 4px rgba(255, 23, 19, 0.7);
+}
+section.game-board-view div#players-container div.player:nth-child(3) {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin-top: -100px;
+}
+section.game-board-view div#players-container div.player:nth-child(3).moved {
+  -webkit-box-shadow: 0px 0px 7px 4px rgba(255, 121, 41, 0.7);
+  -moz-box-shadow: 0px 0px 7px 4px rgba(255, 121, 41, 0.7);
+  box-shadow: 0px 0px 7px 4px rgba(255, 121, 41, 0.7);
+}
+section.game-board-view div#players-container div.player:nth-child(4) {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin-top: -100px;
+}
+section.game-board-view div#players-container div.player:nth-child(4).moved {
+  -webkit-box-shadow: 0px 0px 7px 4px rgba(27, 57, 245, 0.7);
+  -moz-box-shadow: 0px 0px 7px 4px rgba(27, 57, 245, 0.7);
+  box-shadow: 0px 0px 7px 4px rgba(27, 57, 245, 0.7);
+}
+/**
+ * Mobile Controller Styles 
+ */
+section.game-controller h1.main-title {
+  font-family: 'GinkoRegular';
+  font-size: 1.500em;
+  text-align: center;
+  text-transform: uppercase;
+  text-shadow: 0em 0em 0.071em rgba(0, 0, 0, 0.5);
+  filter: dropshadow(color=rgba(0, 0, 0, 0.5), offx=0em, offy=0em);
+}
+section.game-controller div.game-controller-intro {
+  text-align: center;
+}
+section.game-controller div.game-controller-intro form.player-form div.form-buttons button {
+  margin-bottom: 10px;
+}
+section.game-controller div.game-status-container {
+  font-family: 'wonton';
+  font-size: 1.500em;
+  text-shadow: 0em 0em 0.071em rgba(0, 0, 0, 0.5);
+  filter: dropshadow(color=rgba(0, 0, 0, 0.5), offx=0em, offy=0em);
+  margin: 0 auto;
+  text-align: center;
+}
+section.game-controller div.game-status-container div.controller-info div.controller-buttons {
+  padding: 20px 0;
+}
+section.game-controller div.game-status-container div.controller-info div.controller-buttons a.control img {
+  width: 100px;
+  height: 100px;
+}
+section.game-controller div.game-status-container div.controller-info button.quit {
+  margin-top: 4em;
+}
+/* Large desktop */
+@media (min-width: 1200px) {
+  
+}
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+  
+}
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+  
+}
+/* Landscape phones and down */
+@media (max-width: 480px) {
+  
+}

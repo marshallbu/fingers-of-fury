@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+
+  <div id="move" style="float: right;">
+    <img src="" />
+  </div>
+  
+  <h3>Frame data:</h3>
+  <div id="frameData"></div>
+  <div style="clear:both;"></div>
+  <h3>Hand data:</h3>
+  <div id="handData"></div>
+  <div style="clear:both;"></div>
+  <h3>Finger and tool data:</h3>
+  <div id="pointableData"></div>
+  <div style="clear:both;"></div>
+  <h3>Gesture data:</h3>
+  <div id="gestureData"></div>
+
+  
+
+  <script src="http://js.leapmotion.com/0.2.0/leap.js"></script>
+  <script>
+    // Store frame for motion functions
+    var previousFrame;
+    var paused = false;
+    var pauseOnGesture = false;
+
+    var waitingForMove = false;
+    var detectionWait = 1000000;
+
+    var move = {
+      type: '',
+      capturedId: '',
+      timestamp: 0
+    };
+
+    var image = document.querySelector('div#move img');
+
+    // Setup Leap loop with frame callback function
+    var controllerOptions = {enableGestures: true};
+
+    // Setup Leap loop with frame callback function
+    var controllerOptions = {enableGestures: true};
+
+    Leap.loop(controllerOptions, function(frame) {
+      // if (paused) {
+      //   return; // Skip this update
+      // }
+
+      // Display Frame object data
+      var frameOutput = document.getElementById("frameData");
+
+      var frameString = "Frame ID: " + frame.id  + "<br />"
+                      + "Timestamp: " + frame.timestamp + " &micro;s<br />"
+                      + "Hands: " + frame.hands.length + "<br />"
+                      + "Fingers: " + frame.fingers.length + "<br />"
+                      + "Tools: " + frame.tools.length + "<br />"
+                      + "Gestures: " + frame.gestures.length + "<br />";
+
+
+      // Frame motion factors
+      if (previousFrame) {
+        var translation = frame.translation(previousFrame);
+        frameString += "Translation: " + vectorToString(translation) + " mm <br />";
+
+        var rotationAxis = frame.rotationAxis(previousFrame);
+        var rotationAngle = frame.rotationAngle(previousFrame);
+        frameString += "Rotation axis: " + vectorToString(rotationAxis, 2) + "<br />";
+        frameString += "Rotation angle: " + rotationAngle.toFixed(2) + " radians<br />";
+
+        var scaleFactor = frame.scaleFactor(previousFrame);
+        frameString += "Scale factor: " + scaleFactor.toFixed(2) + "<br />";
+      }
+      frameOutput.innerHTML = "<div style='width:300px; float:left; padding:5px'>" + frameString + "</div>";
+
+
+      // Display Gesture object data
+      var gestureOutput = document.getElementById("gestureData");
+      var gestureString = "";
+      if (frame.gestures.length > 0) {
+        if (pauseOnGesture) {
+          togglePause();
+        }
+        for (var i = 0; i < frame.gestures.length; i++) {
+          var gesture = frame.gestures[i];
+          gestureString += "Gesture ID: " + gesture.id + ", "
+                        + "type: " + gesture.type + ", "
+                        + "state: " + gesture.state + ", "
+                        + "hand IDs: " + gesture.handIds.join(", ") + ", "
+                        + "pointable IDs: " + gesture.pointableIds.join(", ") + ", "
+                        + "duration: " + gesture.duration + " &micro;s, ";
+
+          switch (gesture.type) {
+            case "circle":
+              gestureString += "center: " + vectorToString(gesture.center) + " mm, "
+                            + "normal: " + vectorToString(gesture.normal, 2) + ", "
+                            + "radius: " + gesture.radius.toFixed(1) + " mm, "
+                            + "progress: " + gesture.progress.toFixed(2) + " rotations";
+              break;
+            case "swipe":
+              gestureString += "start position: " + vectorToString(gesture.startPosition) + " mm, "
+                            + "current position: " + vectorToString(gesture.position) + " mm, "
+                            + "direction: " + vectorToString(gesture.direction, 2) + ", "
+                            + "speed: " + gesture.speed.toFixed(1) + " mm/s";
+              break;
+            case "screenTap":
+            case "keyTap":
+              gestureString += "position: " + vectorToString(gesture.position) + " mm, "
+                            + "direction: " + vectorToString(gesture.direction, 2);
+              break;
+            default:
+              gestureString += "unkown gesture type";
+          }
+          gestureString += "<br />";
+        }
+      }
+      else {
+        gestureString += "No gestures";
+      }
+      gestureOutput.innerHTML = gestureString;
+
+      // Store frame for motion functions
+      previousFrame = frame;
+
+
+
+      /*****************************************/
+
+      // Let's play with some stuff, first, let's detect our capture gesture
+      if (!waitingForMove && frame.gestures.length > 0) {
+        console.log('waiting to capture move');
+        for (var i = 0; i < frame.gestures.length; i++) {
+          var gesture = frame.gestures[i];
+
+          if (gesture.type === 'circle') {
+            move.type = '';
+            move.timestamp = 0;
+            waitingForMove = true;
+
+          }
+        }
+      }
+
+      if (waitingForMove) {
+        console.log('waiting for a move now');
+
+        if (frame.hands.length === 1) {
+
+          switch (frame.fingers.length) {
+            case 0:
+            case 1:
+              console.log('detecting rock');
+              if (move.type === '' && move.timestamp === 0
+                || move.type !== 'rock') {
+                move.type = 'rock';
+                move.timestamp = frame.timestamp;
+              } else { 
+                if (frame.timestamp - move.timestamp >= detectionWait) {
+                  waitingForMove = false;
+
+                  image.setAttribute('src', '/images/rock.png');
+                }
+
+              }
+            
+              break;
+            case 2:
+              console.log('detecting scissors');
+              if (move.type === '' && move.timestamp === 0
+                || move.type !== 'scissors') {
+                move.type = 'scissors';
+                move.timestamp = frame.timestamp;
+              } else { 
+                if (frame.timestamp - move.timestamp >= detectionWait) {
+                  waitingForMove = false;
+
+                  image.setAttribute('src', '/images/scissors.png');
+                }
+
+              }
+
+              break;
+            case 5:
+              console.log('detecting paper');
+              if (move.type === '' && move.timestamp === 0
+                || move.type !== 'paper') {
+                move.type = 'paper';
+                move.timestamp = frame.timestamp;
+              } else { 
+                if (frame.timestamp - move.timestamp >= detectionWait) {
+                  waitingForMove = false;
+
+                  image.setAttribute('src', '/images/paper.png');
+                }
+
+              } 
+
+              break;
+            default: 
+              console.log('um, wtf?');
+
+          }
+
+        }
+      }
+    });
+
+    function vectorToString(vector, digits) {
+      if (typeof digits === "undefined") {
+        digits = 1;
+      }
+      return "(" + vector[0].toFixed(digits) + ", "
+                 + vector[1].toFixed(digits) + ", "
+                 + vector[2].toFixed(digits) + ")";
+    }
+  </script>
+</body>
+</html>

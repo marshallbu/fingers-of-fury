@@ -1,0 +1,405 @@
+@import "../../vendor/less-elements/elements";
+@import "../../vendor/animate.css/animate.css";
+@import "custom-mixins";
+@import "custom-fonts";
+@import "custom-animations";
+
+// Settings and Defaults
+@imgBaseUrl: "../../images/";
+@colorBloodHex: #9e0b0f;
+@colorBloodRGB: rgba(158, 11, 15, 1);
+
+html {
+  height: 100%;
+}
+
+body {
+  color: #222;
+  background: #222222;
+  margin: 0;
+  padding: 0;
+
+  div.main-view {
+    padding: 0;
+    margin: 0;
+    position: relative;
+  }
+}
+
+div#page.container-fluid {
+  padding: 0;
+  margin: 10px;
+  position: relative;
+  height: 100%;
+
+  div.main-view.mobile & {
+    margin: 0;
+  }
+
+  /* desktop container
+   */
+  div#game-board-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 1px solid #111; 
+
+    div#game-board {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 10px;
+      background: url('@{imgBaseUrl}board.jpg') no-repeat center center fixed; 
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      overflow: hidden;
+    }
+
+  }
+
+  /* mobile container
+   */
+  div#game-controller-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    color: #f2f2f2;
+    // border: 1px solid #111; 
+
+    div#game-controller {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 10px;
+      // background: url('@{imgBaseUrl}board.jpg') no-repeat center center fixed; 
+      // -webkit-background-size: cover;
+      // -moz-background-size: cover;
+      // -o-background-size: cover;
+      // background-size: cover;
+      // background: white;
+    }
+
+  }
+
+
+}
+
+
+/**
+ * Desktop Board Styles 
+ */
+// Intro Styles
+section.game-intro-view {
+  // height: 600px;
+  background-image:url('@{imgBaseUrl}blood_strike.png');
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center -75px;
+
+  h1.main-title {
+    margin: 0;
+    color: #FFC627;
+    font-family:'GinkoRegular';
+    font-size: 5.286em;
+    text-align: center;
+    text-transform: uppercase;
+    .text-shadow(0em, 0em, 0.071em, rgba(0, 0, 0, 0.5));
+
+  }
+
+  div.control-gestures {
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    img {
+      height: 12.500em;
+      width: 12.500em;
+      margin: 0 30px;
+
+      &:nth-child(1) {
+        -webkit-animation-duration: 0.5s;
+        -webkit-animation-delay: 0s;
+        // -webkit-animation-iteration-count: infinite;
+        -moz-animation-duration: 0.5s;
+        -moz-animation-delay: 0s;
+        // -moz-animation-iteration-count: infinite;
+        -ms-animation-duration: 0.5s;
+        -ms-animation-delay: 0s;
+        // -ms-animation-iteration-count: infinite;
+        animation-duration: 0.5s;
+        animation-delay: 0s;
+        // animation-iteration-count: infinite;
+      }
+
+      &:nth-child(2) {
+        -webkit-animation-duration: 0.5s;
+        -webkit-animation-delay: 0.2s;
+        // -webkit-animation-iteration-count: infinite;
+        -moz-animation-duration: 0.2s;
+        -moz-animation-delay: 0.5s;
+        // -moz-animation-iteration-count: infinite;
+        -ms-animation-duration: 0.2s;
+        -ms-animation-delay: 0.5s;
+        // -ms-animation-iteration-count: infinite;
+        animation-duration: 0.2s;
+        animation-delay: 0.5s;
+        // animation-iteration-count: infinite;
+      }
+
+      &:nth-child(3) {
+        -webkit-animation-duration: 0.5s;
+        -webkit-animation-delay: 0.4s;
+        // -webkit-animation-iteration-count: infinite;
+        -moz-animation-duration: 0.5s;
+        -moz-animation-delay: 0.4s;
+        // -moz-animation-iteration-count: infinite;
+        -ms-animation-duration: 0.5s;
+        -ms-animation-delay: 0.4s;
+        // -ms-animation-iteration-count: infinite;
+        animation-duration: 0.5s;
+        animation-delay: 0.4s;
+        // animation-iteration-count: infinite;
+      }
+    }
+  }
+
+  div.control-info {
+    width: 600px;
+    padding: 30px 0;
+    margin: 0 auto;
+    text-align: center;
+    // font-family:'Papyrus-Regular';
+    // line-height: 1.429em;
+    line-height: 1em;
+    font-size: 1.143em;
+    font-weight: bold;
+    // .text-shadow(0em, 0em, 0.071em, rgba(0, 0, 0, 0.5));
+
+    img {
+      // border: 1px solid @colorBloodRGB;
+      // float: left;
+      // margin-right: 10px;
+      margin-bottom: 10px;
+    }
+
+    span.link {
+      font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+      color: @colorBloodHex;
+      .text-shadow(0em, 0em, 0em, rgba(0,0,0,0.0));
+    }
+  }
+
+}
+
+// Board styles
+section.game-board-view {
+  height: 100%;
+  width: 100%;
+  display: table;
+  position: relative;
+
+  div.game-status-container {
+    // font-family:'Papyrus-Regular';
+    font-size: 3.143em;
+    line-height: 1.429em;
+    // .text-shadow(0em, 0em, 0.071em, rgba(0, 0, 0, 0.5));
+    // width: 500px;
+    margin: 0 auto;
+    text-align: center;
+    display: table-cell;
+    vertical-align: middle;
+
+    div.table-waiting {
+      font-family: 'wonton';
+      color: @colorBloodHex;
+    }
+
+    div.table-round-info {
+      // text-align: left;
+      font-family: 'wonton';
+    }
+
+    div.table-judgement-info {
+      // text-align: left;
+    }
+  }
+
+  div#players-container {
+    div.player {
+      height: 200px;
+      width: 200px;
+      border: 1px solid #111;
+      background-color: rgba(0, 0, 0, .5);
+      color: #fff;
+      .box-shadow(0px 0px 7px 1px rgba(0, 0, 0, .4));
+      .rounded(30px);
+      overflow: hidden;
+      -webkit-animation-duration: 0.5s;
+      -webkit-animation-delay: 0s;
+      // -webkit-animation-iteration-count: infinite;
+      -moz-animation-duration: 0.5s;
+      -moz-animation-delay: 0s;
+      // -moz-animation-iteration-count: infinite;
+      -ms-animation-duration: 0.5s;
+      -ms-animation-delay: 0s;
+      // -ms-animation-iteration-count: infinite;
+      animation-duration: 0.5s;
+      animation-delay: 0s;
+      // animation-iteration-count: infinite;
+
+      &.player-class1 {
+        background-image: url('@{imgBaseUrl}avatar/av-class1.png');
+        background-size: cover;
+      }
+
+      h3.player-name {
+        margin: 0;
+        padding: 10px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, .5);
+      }
+
+      &:nth-child(1) {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        margin-left: -100px;
+
+        &.moved {
+          .box-shadow(0px 0px 7px 4px rgba(0, 143, 42, .8));
+        }
+      }
+
+      &:nth-child(2) {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        margin-left: -100px;
+        
+        &.moved {
+          .box-shadow(0px 0px 7px 4px rgba(255, 23, 19, .7));
+        }
+      }
+
+      &:nth-child(3) {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        margin-top: -100px;
+
+        &.moved {
+          .box-shadow(0px 0px 7px 4px rgba(255, 121, 41, .7));
+        }
+      }
+
+      &:nth-child(4) {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        margin-top: -100px;
+
+        &.moved {
+          .box-shadow(0px 0px 7px 4px rgba(27, 57, 245, .7));
+        }
+      }
+    }
+    } // div#players-container
+}
+
+/**
+ * Mobile Controller Styles 
+ */
+ // Intro Styles
+ section.game-controller {
+
+   h1.main-title {
+     font-family:'GinkoRegular';
+     font-size: 1.500em;
+     text-align: center;
+     text-transform: uppercase;
+     .text-shadow(0em, 0em, 0.071em, rgba(0, 0, 0, 0.5));
+   }
+
+   div.game-controller-intro {
+     text-align: center;
+
+     form.player-form {
+
+
+       div.form-buttons {
+
+         button {
+           margin-bottom: 10px;
+         }
+       }
+     }
+   }
+
+   div.game-status-container {
+     font-family:'wonton';
+     font-size: 1.500em;
+     // line-height: 1.500em;
+     .text-shadow(0em, 0em, 0.071em, rgba(0, 0, 0, 0.5));
+     margin: 0 auto;
+     text-align: center;
+
+     div.controller-info {
+       // text-align: left;
+
+
+       div.controller-buttons {
+         padding: 20px 0;
+
+         a.control {
+
+           img {
+             width: 100px;
+             height: 100px;
+           }
+         }
+
+       }
+
+       button.quit {
+         margin-top: 4em;
+       }
+     }
+   }
+
+ }
+
+
+/* Large desktop */
+@media (min-width: 1200px) { 
+
+}
+ 
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+}
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+
+}
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) { 
+
+}

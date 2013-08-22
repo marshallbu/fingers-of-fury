@@ -1,0 +1,35 @@
+<div id="page" class="container-fluid" ng-controller="GameBoardCtrl">
+  <div id="game-board-container">
+    <div id="game-board">
+
+      <section class="game-board-view">
+
+        <div class="game-status-container">
+          <div class="table-round-info" ng-show="game.round.active">
+            <div ng-hide="displayRoundInfo()" class="table-waiting" pulse-infinite>waiting for other warriors...</div>
+
+            <div ng-show="displayRoundInfo()" class="table-round">Round: {{roundDisplay()}}</div>
+            <div ng-show="displayRoundInfo()" class="table-action"></div>
+            <div ng-show="displayRoundInfo()" class="table-choose" pulse-infinite>choose your technique!</div>
+            <div ng-show="debug" class="table-session">Session: {{game.table.session}}</div>
+            <div ng-show="displayRoundInfo()" class="table-move"></div>
+          </div>
+
+          <div class="table-judgement-info" ng-show="game.judgement.active">
+            <div ng-show="displayJudgementInfo()" class="table-results" ng-bind-html-unsafe="game.judgement.message"></div>
+            <div ng-show="debug" class="table-session">Session: {{game.table.session}}</div>
+          </div>
+
+        </div>
+
+        <div id="players-container">
+          <div ng-repeat="player in game.players | orderBy:game.playerOrderPredicate" class="player player-class1" ng-class="{'moved': playerMoved(player)}" player-enter player-info>
+            <h3 class="player-name">{{player.name}}</h3>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+  </div>
+</div>

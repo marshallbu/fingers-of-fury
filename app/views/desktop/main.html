@@ -1,0 +1,22 @@
+<div id="page" class="container-fluid" ng-controller="GameIntroCtrl">
+  <div id="game-board-container">
+    <div id="game-board">
+      <section class="game-intro-view" intro-init>
+        <h1 class="main-title" pulse-infinite>Fingers of Fury</h1>
+
+        <div class="control-gestures" intro-gestures>
+          <img src="images/rock.png" />
+          <img src="images/paper.png" />
+          <img src="images/scissors.png" />
+        </div>
+
+        <div class="control-info">
+          <img ng-show="!_.isEmpty(game.table)" ng-src="{{game.table.qr_url}}"/>
+          <p>Scan the QR code to join on your iPhone!</p>
+          <p>(or visit: <span class="link">{{game.table.url}}</span>)</p>
+        </div>
+
+      </section>
+    </div>
+  </div>
+</div>

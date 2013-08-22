@@ -1,7 +1,5 @@
-var _ = require('underscore');
+var _ = require('lodash');
 var util = require('util');
-var redis = require('redis');
-var redisClient = redis.createClient();
 
 var Table = require('../models/table.js');
 var Player = require('../models/player.js');
